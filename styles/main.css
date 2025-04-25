@@ -102,3 +102,9 @@ select {
     /*--destructive-text-color: #ff595a;*/
 }
 
+.container {
+    width: 80vw;
+    margin: 0 auto;
+    height: 50px;
+    border: 1px solid red;
+}
