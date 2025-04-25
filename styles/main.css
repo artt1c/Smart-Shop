@@ -1,0 +1,104 @@
+/*---------------------RESET CSS---------------------*/
+
+/* Вказуємо box sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Прибираємо внутрішні відступи */
+ul[class],
+ol[class] {
+    padding: 0;
+}
+
+/* Прибираємо зовнішні відступи */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+
+/* Встановлюємо основні налаштування за замовчуванням для body */
+body {
+    min-height: 100vh;
+    scroll-behavior: smooth;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+}
+
+/* Видаляємо стандартну стилізацію для всіх ul та il, які мають атрибут class */
+ul[class],
+ol[class] {
+    list-style: none;
+}
+
+/* Елементи a, які не мають класу, скидаємо до стилів за замовчуванням */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
+/* Спрощуємо роботу із зображеннями */
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Вказуємо зрозумілу періодичність у потоці даних для article */
+article > * + * {
+    margin-top: 1em;
+}
+
+/* Успадковуємо шрифти для інпутів та кнопок */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+
+/*---------------------GLOBAL---------------------*/
+
+* {
+    font-family: "Geologica", serif;
+    font-optical-sizing: auto;
+    font-size: 1rem;
+}
+
+/*-----------Variables------------*/
+
+:root {
+    --primary: #000;
+    --primary-background: #fff;
+    --secondary-background: #f0f0f0;
+    --active: #ee5435;
+
+    /*--color-scheme: dark;*/
+    /*--bg-color: #212121;*/
+    /*--button-color: #8774e1;*/
+    /*--button-text-color: #ffffff;*/
+    /*--hint-color: #aaaaaa;*/
+    /*--link-color: #8774e1;*/
+    /*--secondary-bg-color: #181818;*/
+    /*--text-color: #ffffff;*/
+    /*--header-bg-color: #212121;*/
+    /*--accent-text-color: #8774e1;*/
+    /*--section-bg-color: #212121;*/
+    /*--section-header-text-color: #8774e1;*/
+    /*--subtitle-text-color: #aaaaaa;*/
+    /*--destructive-text-color: #ff595a;*/
+}
+
