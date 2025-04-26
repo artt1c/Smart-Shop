@@ -1,0 +1,29 @@
+@use "../variables";
+
+.section__categories {
+  width: fit-content;
+  height: fit-content;
+  background-color: variables.$primary-background;
+
+  .categories__item {
+    height: fit-content;
+    padding: 4px 30px 4px 8px;
+    border-radius: 8px;
+    &:hover{
+      background-color: variables.$secondary-background;
+    }
+    a {
+      display: inline-block;
+      height: 25px;
+      color: variables.$dark-gray;
+      line-height: 16px;
+      text-decoration: none;
+      img {
+        position: relative;
+        top: 5px;
+        width: 25px;
+        display: inline-block;
+      }
+    }
+  }
+}

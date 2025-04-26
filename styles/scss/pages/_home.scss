@@ -1,0 +1,17 @@
+.home-page {
+
+  .main-section {
+    display: flex;
+    gap: 10px;
+    padding-top: 10px;
+
+    aside {
+      padding: 8px;
+      border-radius: 16px;
+    }
+
+    section {
+      flex-grow: 1;
+    }
+  }
+}

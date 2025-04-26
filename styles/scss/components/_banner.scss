@@ -1,0 +1,17 @@
+@use "../variables";
+
+.section__banner {
+  max-width: 150px;
+  height: fit-content;
+  background-color: variables.$primary-background;
+
+
+  a {
+    display: block;
+    margin-bottom: 5px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+}
