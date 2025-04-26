@@ -1,0 +1,119 @@
+@use "../variables";
+
+.header {
+  width: 100vw;
+  padding: 0 5vw 12px;
+  background-color: variables.$primary-background;
+  -webkit-box-shadow: 0 10px 8px -8px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0 10px 8px -8px rgba(34, 60, 80, 0.2);
+  box-shadow: 0 10px 8px -8px rgba(34, 60, 80, 0.2);
+
+  &__top {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    margin-bottom: 10px;
+  }
+  &__logo {
+    width: 150px;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+  }
+  &__item {
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+  .category__show-btn, .search__form {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .category__show-btn{
+    padding: 7px 20px 7px 15px;
+    font-size: 1rem;
+    background-color: variables.$secondary;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    color: variables.$primary-light;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    &:hover {
+      background-color: variables.$active;
+      cursor: pointer;
+    }
+    img {
+      filter: invert(1);
+    }
+  }
+
+  &__search {
+    flex-grow: 1;
+    margin: 0 8vw 0 15vw;
+    border: 2px solid variables.$secondary;
+    border-radius: 8px;
+
+    .search__form {
+      display: flex;
+
+      .search__label {
+        flex-grow: 2;
+        display: flex;
+        padding: 7px 50px 7px 10px;
+
+        img {
+          width: 25px;
+        }
+        input {
+          border: none;
+          &:focus {
+            outline: none;
+            border: none;
+          }
+        }
+      }
+
+      button {
+        flex-grow: 1;
+        max-width: 150px;
+        height: 44px;
+        background-color: variables.$secondary;
+        border: none;
+        color: variables.$primary-light;
+        font-weight: bold;
+        text-align: center;
+        transition: background-color 0.3s;
+        &:hover {
+          background-color: variables.$active;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .header__user-panel {
+    .user-panel__list {
+      display: flex;
+      gap: 20px;
+    }
+    .user-panel__item {
+      a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: variables.$dark-gray;
+        font-size: .8rem;
+        text-decoration: none;
+      }
+    }
+
+  }
+}
