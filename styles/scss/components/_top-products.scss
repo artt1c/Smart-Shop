@@ -1,0 +1,34 @@
+@use "../variables";
+
+//todo on hover to product slide add shadow
+.section__top-products {
+  height: fit-content;
+  padding-bottom: 30px;
+  background-color: variables.$primary-background;
+  border-radius: 16px;
+
+  .top-products__title {
+    width: fit-content;
+    padding: 4px 10px 5px;
+    margin: 10px;
+    background-color: variables.$active;
+    border-radius: 10px;
+    color: variables.$primary-light;
+  }
+
+  .top-products__slide {
+    display: block;
+    width: 25%;
+    padding: 16px;
+    border-left: 1px solid variables.$gray;
+
+    img {
+      width: 14.3vw;
+      height: 14.3vw;
+      object-fit: contain;
+    }
+  }
+  .swiper-slide-active {
+    border: none;
+  }
+}

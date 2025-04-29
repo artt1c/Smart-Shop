@@ -1,10 +1,8 @@
 import {baseUrl, urls} from "../URLS.js";
 
-const ApiService = {
-  // auth: {
-  // todo 'auth service'
-  // },
+const selectParams = 'select=title,price,rating,reviews,images'
 
+const ApiService = {
   product: {
     getAll: async () => {
       try {
@@ -14,7 +12,34 @@ const ApiService = {
 
         return response.json();
       } catch (e) {
-        console.log(e)
+        console.error(e)
+      }
+    },
+
+    getAllProductsWithSomeValue: async (...productValue) => {
+      const urlParams = baseUrl+urls.products.basePath + '/?limit=0&select='+ productValue.join(',')
+
+      try {
+        const response = await fetch(urlParams)
+
+        if(!response.ok) throw new Error(`Response status: ${response.status}`)
+
+        return response.json();
+      } catch (e) {
+        console.error(e)
+      }
+    },
+
+    getTopProductByRating: async (productCount = 10) => {
+      const ursWithParams = baseUrl + urls.products.basePath + '/?sortBy=rating&order=desc&limit=' + productCount + '&' + selectParams
+      try {
+        const response = await fetch(ursWithParams);
+
+        if(!response.ok) throw new Error(`Response status: ${response.status}`)
+
+        return response.json();
+      } catch (e) {
+        console.error(e)
       }
     },
 
@@ -27,10 +52,13 @@ const ApiService = {
 
         return response.json();
       } catch (e) {
-        console.log(e)
+        console.error(e)
       }
     },
 
+  },
+
+  categories: {
     getCategoriesList: async () => {
       try {
         const response = await fetch(baseUrl + urls.products.categoriesList)
@@ -39,7 +67,7 @@ const ApiService = {
 
         return response.json();
       } catch (e) {
-        console.log(e)
+        console.error(e)
       }
     },
 
@@ -52,11 +80,9 @@ const ApiService = {
 
         return response.json();
       } catch (e) {
-        console.log(e)
+        console.error(e)
       }
     },
-
-
   }
 }
 

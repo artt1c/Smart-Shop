@@ -2,8 +2,10 @@
 
 .section__categories {
   width: fit-content;
+  max-width: 14vw;
   height: fit-content;
   background-color: variables.$primary-background;
+  font-size: .8rem;
 
   .categories__item {
     height: fit-content;
@@ -14,14 +16,14 @@
     }
     a {
       display: inline-block;
-      height: 25px;
+      height: 20px;
       color: variables.$dark-gray;
       line-height: 16px;
       text-decoration: none;
       img {
         position: relative;
         top: 5px;
-        width: 25px;
+        width: 20px;
         display: inline-block;
       }
     }

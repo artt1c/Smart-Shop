@@ -7,9 +7,15 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>ОТАК | Головна</title>
 
+  <!--FAVICONS-->
   <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+
+  <!--SWIPER-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 
   <link rel="stylesheet" href="styles/main.css">
 
@@ -30,6 +36,12 @@
           <img src="img/icons/category.svg" alt="category">
           <span>Каталог</span>
         </button>
+      </li>
+
+      <li class="header__item header__mascot">
+        <a href="#">
+          <img src="img/header-component/mascot.jpg" alt="phone">
+        </a>
       </li>
 
       <li class="header__item header__search">
@@ -55,12 +67,6 @@
             <a href="#">
               <img src="img/icons/cart.svg" alt="корзина">
               <p>корзина</p>
-            </a>
-          </li>
-          <li class="user-panel__item">
-            <a href="#">
-              <img src="img/icons/user-round.svg" alt="кабінет">
-              <p>кабінет</p>
             </a>
           </li>
         </ul>
@@ -193,8 +199,15 @@
           </ul>
         </aside>
 
-        <section>
-
+        <section class="section__top-products">
+          <h2 class="top-products__title">Кращі товари</h2>
+          <div class="top-products__list swiper">
+            <div class="swiper-wrapper" id="top-products-wrapper">
+              <!--ADD PRODUCTS FROM JS-->
+            </div>
+            <div class="swiper-button-prev top-products__pag-prev"></div>
+            <div class="swiper-button-next top-products__pag-next"></div>
+          </div>
         </section>
 
         <aside class="section__banner">
