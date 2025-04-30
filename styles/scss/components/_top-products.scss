@@ -3,6 +3,7 @@
 //todo on hover to product slide add shadow
 .section__top-products {
   height: fit-content;
+  padding-top: 10px;
   padding-bottom: 20px;
   background-color: variables.$primary-background;
   border-radius: 16px;
@@ -10,7 +11,7 @@
   .top-products__title {
     width: fit-content;
     padding: 4px 10px 5px;
-    margin: 10px;
+    margin: 0 10px 10px;
     background-color: variables.$active;
     border-radius: 10px;
     color: variables.$primary-light;
