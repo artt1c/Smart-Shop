@@ -3,7 +3,7 @@
 //todo on hover to product slide add shadow
 .section__top-products {
   height: fit-content;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
   background-color: variables.$primary-background;
   border-radius: 16px;
 
@@ -18,17 +18,198 @@
 
   .top-products__slide {
     display: block;
-    width: 25%;
-    padding: 16px;
+    width: 20%;
+    padding: 0 8px 16px;
     border-left: 1px solid variables.$gray;
+    color: variables.$dark-gray;
+
+    &:hover {
+      box-shadow: 0 0 32px 0 rgba(50,50,50,0.15);
+      z-index: 7;
+    }
 
     img {
-      width: 14.3vw;
-      height: 14.3vw;
+      width: 11.4vw;
+      height: 11.4vw;
       object-fit: contain;
     }
+
+    h4 {
+      height: 40px;
+      font-weight: normal;
+    }
+
+    .slide__feedback-link {
+      text-decoration: none;
+      color: variables.$dark-gray;
+
+      .slide__feedback {
+        display: flex;
+        margin-top: 10px;
+
+        .slide__rating {
+          height: 20px;
+          padding-left: 25px;
+          margin-right: 10px;
+          background-image: url('../../../img/raiting-icon.svg');
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: left center;
+        }
+
+        .slide__reviews {
+          height: 30px;
+          padding-left: 30px;
+          background-image: url('../../../img/comments.svg');
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: left center;
+        }
+
+        &:hover .slide__reviews {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .slide__buy-group {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+
+      .slide__price {
+        color: variables.$primary;
+        font-weight: bold;
+        font-size: 1.3rem;
+
+        .price-currency {
+          margin-left: 10px;
+          font-size: 1.2rem;
+          font-weight: normal;
+        }
+      }
+      .slide__buy-control {
+        min-width: 69px;
+
+        .buy-control__btn-scales {
+          appearance: none;
+          width: 25px;
+          height: 25px;
+          margin-right: 1vw;
+          background-color: transparent;
+          background-image: url('../../../img/icons/scales.svg');
+          background-size: contain;
+          background-repeat: no-repeat;
+          outline: none;
+          border: none;
+          filter: opacity(.6);
+
+          &:hover {
+            cursor: pointer;
+            filter: opacity(.9);
+          }
+          &:active {
+            transform: scale(.9);
+          }
+        }
+
+        .buy-control__btn-cart {
+          position: relative;
+          width: 30px;
+          height: 30px;
+          background-color: variables.$secondary;
+          outline: none;
+          border: none;
+          border-radius: 8px;
+
+          &::after {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            transform: translate(-50%, -50%);
+            content: '';
+            background-size: 85%;
+            background-image: url('../../../img/icons/cart.svg');
+            background-position: center center;
+            background-repeat: no-repeat;
+            filter: invert(1);
+            z-index: 10;
+          }
+
+          &:hover {
+            cursor: pointer;
+            background-color: variables.$active;
+
+            &::after {
+            left: 46%;
+            background-size: 90%;
+
+            }
+          }
+          &:active {
+            transform: scale(.9);
+          }
+        }
+      }
+    }
+
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      width: 20px;
+      height: 20px;
+      border-radius: 50px;
+      box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+      filter: invert(37%) sepia(94%) saturate(609%) hue-rotate(342deg) brightness(90%) contrast(103%);
+
+      &::after {
+        content: none;
+      }
+
+      &:hover {
+        cursor: pointer;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, .5);
+      }
+    }
+    .swiper-button-next {
+      background-image: url('/img/swiper/arrow-right.svg');
+      background-size: contain;
+    }
+    .swiper-button-prev {
+      background-image: url('/img/swiper/arrow-left.svg');
+      background-size: contain;
+    }
   }
+
   .swiper-slide-active {
     border: none;
+  }
+
+  .top-products__pag-next,
+  .top-products__pag-prev {
+    width: 30px;
+    border-radius: 50px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+    filter: invert(37%) sepia(94%) saturate(609%) hue-rotate(342deg) brightness(90%) contrast(103%);
+
+    &::after {
+      content: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, .5);
+    }
+  }
+  .top-products__pag-next {
+    background-image: url('/img/swiper/arrow-right.svg');
+    background-size: contain;
+  }
+  .top-products__pag-prev {
+    background-image: url('/img/swiper/arrow-left.svg');
+    background-size: contain;
   }
 }
