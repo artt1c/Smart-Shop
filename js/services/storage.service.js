@@ -4,7 +4,7 @@ import mapByArrayField from "../helpers/mapByArrayField.js";
 
 // Generic storage handler function
 const handleStorage = {
-  set: (key, data, ttl = 3600, total = null) => {
+  set: (key, data, ttl, total = null, visibleProducts = null) => {
     ttl *= 1000;
 
     if (!localStorage.getItem(key)) {
@@ -12,7 +12,8 @@ const handleStorage = {
       const item = {
         value: data,
         expiry: now.getTime() + ttl,
-        total: total
+        total: total,
+        visibleProducts: visibleProducts
       }
 
       console.log(`set ${key}`);
@@ -20,8 +21,7 @@ const handleStorage = {
     }
   },
 
-  // todo add method
-  add: (key, data, ttl = 3600, total = null) => {
+  add: (key, data, ttl, total = null) => {
     ttl *= 1000;
     const now = new Date();
 
@@ -33,14 +33,15 @@ const handleStorage = {
     const item = {
       value: currentData.value,
       expiry: now.getTime() + ttl,
-      total: total
+      total: total,
+      visibleProducts: currentData.visibleProducts
     }
 
     console.log(`add ${key}`);
     localStorage.setItem(key, JSON.stringify(item));
   },
 
-  get: (key) => {
+  get: (key, visibleProducts = null) => {
     const item = JSON.parse(localStorage.getItem(key));
     if (!item) return null;
 
@@ -84,8 +85,7 @@ const storage = {
   },
 
   allProducts: {
-    // todo remove ttl in future
-    set: (arrProducts, totalProducts, ttl = 3600) => {
+    set: (arrProducts, totalProducts, visibleProducts = 30, ttl = 3600) => {
       const data = new Set()
       data.add(arrProducts.map(item => ({
         id: item.id,
@@ -95,7 +95,7 @@ const storage = {
         reviews: item.reviews,
         images: item.images
       })));
-      handleStorage.set('allProducts', ...data, ttl, totalProducts);
+      handleStorage.set('allProducts', ...data, ttl, totalProducts, visibleProducts);
     },
 
     add: (arrProducts, totalProducts, ttl = 3600) => {

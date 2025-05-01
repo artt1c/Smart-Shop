@@ -12,8 +12,9 @@ import createAllProductsForList from "./utils/createAllProductsForList.js";
 
     await createAllProductsForList()
 
-    document.getElementById('all-products__more-btn').addEventListener('click', () => {
-      addMoreProducts()
+    document.getElementById('all-products__more-btn').addEventListener('click', async () => {
+      await addMoreProducts()
+      await createAllProductsForList()
     })
 
   } catch (e) {
