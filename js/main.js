@@ -1,5 +1,6 @@
-import createTopProductsItemsForList from "./utils/createTopProductsItemsForList.js";
+import createTopProductsItemsForList from "./utils/createTopProductsItemsForSwiper.js";
 import fetchDataForHomePage from "./utils/fetchDataForHomePage.js";
+import createAllProductsForList from "./utils/createAllProductsForList.js";
 
 
 (async function () {
@@ -8,6 +9,8 @@ import fetchDataForHomePage from "./utils/fetchDataForHomePage.js";
     await fetchDataForHomePage()
 
     await createTopProductsItemsForList()
+
+    await createAllProductsForList()
 
   } catch (e) {
     console.error(e)

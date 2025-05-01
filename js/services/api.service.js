@@ -4,20 +4,10 @@ const selectParams = 'select=title,price,rating,reviews,images'
 
 const ApiService = {
   product: {
-    getAll: async () => {
-      try {
-        const response = await fetch(baseUrl + urls.products.basePath)
 
-        if(!response.ok) throw new Error(`Response status: ${response.status}`)
-
-        return response.json();
-      } catch (e) {
-        console.error(e)
-      }
-    },
-
-    getAllProductsWithSomeValue: async (...productValue) => {
-      const urlParams = baseUrl+urls.products.basePath + '/?limit=0&select='+ productValue.join(',')
+    getAllProductsWithSomeValue: async (limit = 30, skip = 0, ...productValue) => {
+      let urlParams = baseUrl+urls.products.basePath + '/?limit='+ limit + '&skip=' + skip;
+      if (productValue.length) urlParams += '&select='+ productValue.join(',')
 
       try {
         const response = await fetch(urlParams)

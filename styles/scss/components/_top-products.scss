@@ -1,10 +1,10 @@
 @use "../variables";
 
-//todo on hover to product slide add shadow
 .section__top-products {
   height: fit-content;
   padding-top: 10px;
   padding-bottom: 20px;
+  margin-bottom: 10px;
   background-color: variables.$primary-background;
   border-radius: 16px;
 
