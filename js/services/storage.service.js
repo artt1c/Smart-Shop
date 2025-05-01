@@ -1,10 +1,10 @@
-import mapByArrayField from "../utils/mapByArrayField.js";
+import mapByArrayField from "../helpers/mapByArrayField.js";
 
 // Items in the local storage are stored temporarily
 
 // Generic storage handler function
 const handleStorage = {
-  set: (key, data, ttl = 3600, total = null,) => {
+  set: (key, data, ttl = 3600, total = null) => {
     ttl *= 1000;
 
     if (!localStorage.getItem(key)) {
@@ -19,7 +19,26 @@ const handleStorage = {
       localStorage.setItem(key, JSON.stringify(item));
     }
   },
+
   // todo add method
+  add: (key, data, ttl = 3600, total = null) => {
+    ttl *= 1000;
+    const now = new Date();
+
+    const currentData = JSON.parse(localStorage.getItem(key));
+    if (!currentData) return null;
+
+    currentData.value.push(...data)
+
+    const item = {
+      value: currentData.value,
+      expiry: now.getTime() + ttl,
+      total: total
+    }
+
+    console.log(`add ${key}`);
+    localStorage.setItem(key, JSON.stringify(item));
+  },
 
   get: (key) => {
     const item = JSON.parse(localStorage.getItem(key));
@@ -65,6 +84,7 @@ const storage = {
   },
 
   allProducts: {
+    // todo remove ttl in future
     set: (arrProducts, totalProducts, ttl = 3600) => {
       const data = new Set()
       data.add(arrProducts.map(item => ({
@@ -77,9 +97,22 @@ const storage = {
       })));
       handleStorage.set('allProducts', ...data, ttl, totalProducts);
     },
+
+    add: (arrProducts, totalProducts, ttl = 3600) => {
+      const data = new Set()
+      data.add(arrProducts.map(item => ({
+        id: item.id,
+        title: item.title,
+        price: item.price,
+        rating: item.rating,
+        reviews: item.reviews,
+        images: item.images
+      })));
+      handleStorage.add('allProducts', ...data, ttl, totalProducts);
+    },
+
     get: () => handleStorage.get('allProducts')
   }
 }
-
 
 export default storage

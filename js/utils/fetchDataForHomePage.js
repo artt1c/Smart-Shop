@@ -14,19 +14,21 @@ export default async function fetchDataForHomePage() {
     storage.topProducts.set(topProducts.products)
   }
 
-  let allProducts = storage.allProducts.get();
+  const allProducts = storage.allProducts.get();
   if (!allProducts) {
     const fetchResponse = await ApiService.product.getAllProductsWithSomeValue();
     storage.allProducts.set(fetchResponse.products, fetchResponse.total)
   }
-    // todo split up to another function
+}
 
-    // const lastProductInStorage = allProducts.value[allProducts.value.length-1].id;
-    // if (allProducts.total > lastProductInStorage) {
-    //   const fetchResponse = await ApiService.product.getAllProductsWithSomeValue(30, lastProductInStorage, 'title','price','rating','reviews','images');
-    //   allProducts.value.push(...fetchResponse.products)
-    //   console.log(allProducts.value)
-    //   console.log(fetchResponse.products)
-    //   storage.allProducts.set(allProducts.value, fetchResponse.total)
-    // }
+export const addMoreProducts = async () => {
+
+  const allProducts = storage.allProducts.get();
+  if (!allProducts) return null;
+
+  const lastProductInStorage = allProducts.value[allProducts.value.length-1].id;
+  if (allProducts.total > lastProductInStorage) {
+    const fetchResponse = await ApiService.product.getAllProductsWithSomeValue(30, lastProductInStorage, 'title','price','rating','reviews','images');
+    storage.allProducts.add(fetchResponse.products, fetchResponse.total)
+  }
 }

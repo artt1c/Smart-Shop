@@ -1,5 +1,5 @@
 import createTopProductsItemsForList from "./utils/createTopProductsItemsForSwiper.js";
-import fetchDataForHomePage from "./utils/fetchDataForHomePage.js";
+import fetchDataForHomePage, {addMoreProducts} from "./utils/fetchDataForHomePage.js";
 import createAllProductsForList from "./utils/createAllProductsForList.js";
 
 
@@ -11,6 +11,10 @@ import createAllProductsForList from "./utils/createAllProductsForList.js";
     await createTopProductsItemsForList()
 
     await createAllProductsForList()
+
+    document.getElementById('all-products__more-btn').addEventListener('click', () => {
+      addMoreProducts()
+    })
 
   } catch (e) {
     console.error(e)
