@@ -37,11 +37,11 @@ const handleStorage = {
       visibleProducts: currentData.visibleProducts
     }
 
-    console.log(`add ${key}`);
+    console.log(`add to ${key}`);
     localStorage.setItem(key, JSON.stringify(item));
   },
 
-  get: (key, visibleProducts = null) => {
+  get: (key = null) => {
     const item = JSON.parse(localStorage.getItem(key));
     if (!item) return null;
 

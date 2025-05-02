@@ -12,7 +12,7 @@ import createAllProductsForList from "./utils/createAllProductsForList.js";
 
     await createAllProductsForList()
 
-    document.getElementById('all-products__more-btn').addEventListener('click', async () => {
+    document.getElementById('footer__more-btn').addEventListener('click', async () => {
       await addMoreProducts()
       await createAllProductsForList()
     })
