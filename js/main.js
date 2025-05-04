@@ -17,6 +17,8 @@ import createAllProductsForList from "./utils/createAllProductsForList.js";
       await createAllProductsForList()
     })
 
+
+
   } catch (e) {
     console.error(e)
   }

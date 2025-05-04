@@ -1,10 +1,12 @@
 @use "variables";
 
 @use "components/header";
+@use "components/footer";
 @use "components/categoties";
 @use "components/banner";
 @use "components/top-products";
 @use "components/all-products";
+@use "components/history";
 
 @use "pages/home";
 
@@ -94,12 +96,16 @@ body {
 }
 
 /* ===================================
-           LAYOUT HELPERS
+           GLOBAL ClASS
 =================================== */
 
 .container {
   width: 90vw;
   margin: 0 5vw;
+}
+
+.hidden {
+  display: none;
 }
 
 .pagination-hidden {

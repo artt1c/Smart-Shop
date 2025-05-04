@@ -21,6 +21,7 @@ export default async function fetchDataForHomePage() {
   }
 }
 
+
 export const addMoreProducts = async () => {
 
   const allProducts = storage.allProducts.get();
@@ -32,3 +33,26 @@ export const addMoreProducts = async () => {
     storage.allProducts.add(fetchResponse.products, fetchResponse.total)
   }
 }
+
+export const addProductToCard = async (productId, quantity = 1) => {
+
+  const response = await ApiService.product.getSingle(productId)
+  const cardProducts = storage.cart.get();
+
+  if (!cardProducts) {
+    storage.cart.add(response, quantity);
+  } else {
+    const existing = cardProducts.find(product => product.id === response.id);
+    const newQuantity = existing ? existing.quantity + quantity : quantity;
+    storage.cart.add(response, newQuantity);
+  }
+}
+
+export const removeProductFromCard = async (productId) => {
+
+}
+
+await addProductToCard(1, 10)
+
+await removeProductFromCard(1)
+
