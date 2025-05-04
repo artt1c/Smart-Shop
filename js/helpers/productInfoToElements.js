@@ -1,4 +1,5 @@
 import swiperStructureForImage from "./swiperStructureForImage.js";
+import {updateProductQuantity} from "../utils/fetchDataForHomePage.js";
 
 const productInfoToElements = (product) => {
   // IMG BLOCK
@@ -48,6 +49,7 @@ const productInfoToElements = (product) => {
 
   const cartBtn = document.createElement('button')
   cartBtn.classList.add('buy-control__btn-cart')
+  cartBtn.onclick = async () => {await updateProductQuantity(product.id, (quantity) => quantity + 1)}
 
   productControl.append(scalesBtn, cartBtn)
   buyGroup.append(productSlidePrice, productControl)

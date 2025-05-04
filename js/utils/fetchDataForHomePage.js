@@ -47,38 +47,3 @@ export const updateProductQuantity = async (productId, getQuantityCallback) => {
 
   quantity <= 0 ? storage.cart.remove(productId) : storage.cart.add(response, quantity);
 }
-
-// export const addProductToCard = async (productId, quantity = 1) => {
-  //
-  // const response = await ApiService.product.getSingle(productId)
-  // const cardProducts = storage.cart.get();
-  //
-  // if (!cardProducts) {
-  //   storage.cart.add(response, quantity);
-  // } else {
-  //   const existing = cardProducts.find(product => product.id === response.id);
-  //   const newQuantity = existing ? existing.quantity + quantity : quantity;
-  //   storage.cart.add(response, newQuantity);
-  // }
-// }
-
-// export const removeProductFromCard = async (productId) => {
-//   const cardProducts = storage.cart.get();
-//   if (!cardProducts) return null;
-//   const existing = cardProducts.find(product => product.id === productId);
-//   if (existing) {
-//     const newQuantity = existing.quantity - 1;
-//     if (newQuantity === 0) {
-//       storage.cart.remove(productId);
-//     } else {
-//       storage.cart.add(existing, newQuantity);
-//     }
-//   }
-// }
-
-// await addProductToCard(1, 10)
-
-// await removeProductFromCard(1)
-
-await updateProductQuantity(5, (quantity) => quantity = 1)
-// await updateProductQuantity(2, (quantity) => quantity - 1)
