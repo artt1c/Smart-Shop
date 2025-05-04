@@ -26,8 +26,6 @@ const handleStorage = {
     ttl *= 1000;
     const now = new Date();
 
-
-
     const currentData = JSON.parse(localStorage.getItem(key));
     if (!currentData) {
       handleStorage.set(key, data, ttl, total, visibleProducts);
@@ -70,6 +68,10 @@ const handleStorage = {
     }
 
     return item.total ? item : item.value;
+  },
+
+  remove: (key) => {
+    localStorage.removeItem(key);
   }
 }
 
@@ -170,6 +172,18 @@ const storage = {
 
     remove: (productId) => {
 
+      const data = handleStorage.get('cart', false);
+      if (!data) console.error('card is empty');
+
+      data.map(product => {
+        if (product.id === productId) {
+          const index = data.indexOf(product);
+          data.splice(index, 1);
+        }
+      })
+
+      handleStorage.remove('cart');
+      handleStorage.set('cart', data, 0);
     },
 
     get: () => handleStorage.get('cart', false),
