@@ -35,25 +35,16 @@ function renderOrderItems() {
 
 async function handleSubmit(event) {
   event.preventDefault();
-  const form = event.target;
-  const formData = new FormData(form);
   const cartItems = storage.cart.get() || [];
-  const totalAmount = document.getElementById('totalAmount');
+  console.log(cartItems);
 
   const orderData = {
-    customerInfo: {
-      name: formData.get('name'),
-      phone: formData.get('phone'),
-      email: formData.get('email'),
-      city: formData.get('city'),
-      address: formData.get('address')
-    },
-    items: cartItems,
-    totalAmount: parseFloat(totalAmount.textContent)
+    userId: 1, // for dev, fake API
+    products: cartItems, // for dev, fake API
   };
 
   try {
-    const response = await fetch('https://dummyjson.com/orders', {
+    const response = await fetch('https://dummyjson.com/carts/add', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
