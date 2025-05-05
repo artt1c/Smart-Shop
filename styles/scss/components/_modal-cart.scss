@@ -1,0 +1,96 @@
+@use "../variables";
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 10;
+
+  &__cart {
+    width: 40vw;
+    min-width: 420px;
+    height: fit-content;
+    padding: 10px;
+    background-color: variables.$primary-background;
+    border-radius: 16px;
+
+    h2, .order {
+      width: fit-content;
+      padding: 4px 10px 5px;
+      background-color: variables.$active;
+      border-radius: 10px;
+      color: variables.$primary-light;
+      font-size: 1.2rem;
+    }
+    .order {
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .cart__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+
+      #close-btn {
+        appearance: none;
+        width: 38px;
+        height: 38px;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        background-image: url('/img/icons/close.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        filter: grayscale(100%) contrast(100%) invert(.7);
+
+
+        &:hover {
+          filter: grayscale(100%) contrast(100%);
+        }
+      }
+    }
+
+    .cart__list {
+      list-style: none;
+      border: 2px solid variables.$secondary;
+      border-radius: 16px;
+
+      .cart__item {
+        display: flex;
+        justify-content: space-between;
+        padding-right: 10px;
+        margin: 10px 20px;
+        border-bottom: 1px solid variables.$gray;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        .item__details {
+          flex-grow: 1;
+        }
+
+        img {
+          width: 80px;
+          height: 80px;
+        }
+      }
+    }
+
+    .cart__bottom {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 10px;
+    }
+  }
+}

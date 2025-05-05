@@ -70,10 +70,10 @@
             </a>
           </li>
           <li class="user-panel__item">
-            <a href="#">
+            <button id="cartBtn">
               <img src="img/icons/cart.svg" alt="корзина">
-              <p>корзина</p>
-            </a>
+              <span>корзина</span>
+            </button>
           </li>
         </ul>
       </li>
@@ -284,6 +284,23 @@
       </ul>
     </div>
   </footer>
+
+  <section class="modal hidden">
+    <div class="modal__cart">
+      <div class="cart__top">
+        <h2>Кошик</h2>
+        <button id="close-btn"></button>
+      </div>
+      <div class="cart__body">
+        <ul class="cart__list">
+
+        </ul>
+      </div>
+      <div class="cart__bottom">
+        <a href="#" class="order">Оформити Замовлення</a>
+      </div>
+    </div>
+  </section>
 
 </body>
 </html>

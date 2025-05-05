@@ -92,6 +92,7 @@ const storage = {
   topProducts: {
     set: (arrItems, ttl = 3600) => {
       const data = arrItems.map(item => ({
+        id: item.id,
         title: item.title,
         price: item.price,
         rating: item.rating,

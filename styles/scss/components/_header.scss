@@ -118,10 +118,14 @@
       gap: 20px;
     }
     .user-panel__item {
-      a {
+      a, button {
+        appearance: none;
         display: flex;
         flex-direction: column;
         align-items: center;
+        background-color: transparent;
+        outline: none;
+        border: none;
         color: variables.$dark-gray;
         font-size: .8rem;
         text-decoration: none;

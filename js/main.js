@@ -1,6 +1,7 @@
 import createTopProductsItemsForList from "./utils/createTopProductsItemsForSwiper.js";
 import fetchDataForHomePage, {addMoreProducts} from "./utils/fetchDataForHomePage.js";
 import createAllProductsForList from "./utils/createAllProductsForList.js";
+import {modalAttachEvents} from "./helpers/attachEvents.js";
 
 
 (async function () {
@@ -17,7 +18,7 @@ import createAllProductsForList from "./utils/createAllProductsForList.js";
       await createAllProductsForList()
     })
 
-
+    modalAttachEvents()
 
   } catch (e) {
     console.error(e)
