@@ -11,6 +11,8 @@ export const createCartList = () => {
 
 
   const products = storage.cart.get();
+  if (!products) return;
+
   products.forEach(product => {
     const cartItem = document.createElement('li')
     cartItem.classList.add('cart__item')
