@@ -1,10 +1,14 @@
 import storage from "../services/storage.service.js";
-import {updateProductQuantity} from "./fetchDataForHomePage.js";
+import totalPriceInCard from "../helpers/totalPriceInCard.js";
+import {handleCartItemUpdate} from "../helpers/handleCartItemUpdate.js";
 
 export const createCartList = () => {
 
   const cartList = document.getElementsByClassName('cart__list')[0]
   cartList.innerHTML = '';
+  const totalPriceElement = document.getElementsByClassName('price-block__total')[0];
+  const totalPriceBlock = document.getElementsByClassName('cart__price-block')[0];
+
 
   const products = storage.cart.get();
   products.forEach(product => {
@@ -40,45 +44,45 @@ export const createCartList = () => {
 
     const cartItemQuantityDecrease = document.createElement('button')
     cartItemQuantityDecrease.classList.add('actions__quantity-decrease')
-    cartItemQuantityDecrease.innerText = '-'
-    cartItemQuantityDecrease.addEventListener('click', async () => {
 
+    // Decrease
+    cartItemQuantityDecrease.addEventListener('click', async () => {
       cartItemQuantity.value--
       if (cartItemQuantity.value < 1) cartItem.remove()
-
-      cartItemPrice.innerText = (product.price * cartItemQuantity.value).toFixed(2) + ' $'
-      await updateProductQuantity(product.id, () => cartItemQuantity.value)
+      await handleCartItemUpdate(product, cartItemQuantity, cartItemPrice, products, totalPriceElement, totalPriceBlock);
     })
 
+    // cartItemQuantity
     const cartItemQuantity = document.createElement('input')
     cartItemQuantity.classList.add('actions__quantity')
     cartItemQuantity.type = 'number'
     cartItemQuantity.value = product.quantity
     cartItemQuantity.min = '1'
+
     cartItemQuantity.addEventListener('change', async () => {
-
       if (cartItemQuantity.value < 1) cartItem.remove()
-
-      cartItemPrice.innerText = (product.price * cartItemQuantity.value).toFixed(2) + ' $'
-      await updateProductQuantity(product.id, () => cartItemQuantity.value)
+      await handleCartItemUpdate(product, cartItemQuantity, cartItemPrice, products, totalPriceElement, totalPriceBlock);
     })
 
-
+    // Increase
     const cartItemQuantityIncrease = document.createElement('button')
     cartItemQuantityIncrease.classList.add('actions__quantity-increase')
-    cartItemQuantityIncrease.innerText = '+'
+
     cartItemQuantityIncrease.addEventListener('click', async () => {
       cartItemQuantity.value++
-      cartItemPrice.innerText = (product.price * cartItemQuantity.value).toFixed(2) + ' $'
-      await updateProductQuantity(product.id, () => cartItemQuantity.value)
+      await handleCartItemUpdate(product, cartItemQuantity, cartItemPrice, products, totalPriceElement, totalPriceBlock);
     })
 
+    // Append elements
     cartItemQuantityActionsBlock.append(cartItemQuantityDecrease, cartItemQuantity, cartItemQuantityIncrease)
 
     cartItemActions.append(cartItemPrice, cartItemQuantityActionsBlock)
 
     cartItem.append(cartItemImg, cartItemDetails, cartItemActions)
     cartList.appendChild(cartItem)
+
   })
 
+  totalPriceElement.innerText = totalPriceInCard(products).toFixed(2);
+  totalPriceElement.innerText === '0.00' ? totalPriceBlock.style.display = 'none' : totalPriceBlock.style.display = 'flex';
 }

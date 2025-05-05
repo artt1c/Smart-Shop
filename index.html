@@ -62,20 +62,10 @@
       </li>
 
       <li class="header__item header__user-panel">
-        <ul class="user-panel__list">
-          <li class="user-panel__item">
-            <a href="#">
-              <img src="img/icons/scales.svg" alt="порівняння">
-              <p>порівняння</p>
-            </a>
-          </li>
-          <li class="user-panel__item">
-            <button id="cartBtn">
-              <img src="img/icons/cart.svg" alt="корзина">
-              <span>корзина</span>
-            </button>
-          </li>
-        </ul>
+        <button id="cartBtn">
+          <img src="img/icons/cart.svg" alt="корзина">
+          <span>корзина</span>
+        </button>
       </li>
     </ul>
   </header>
@@ -248,7 +238,7 @@
         </section>
 
         <aside class="section__banner">
-          <a href="warranty">
+          <a href="#">
             <img src="img/promo01.png" alt="гарантія">
           </a>
 
@@ -286,19 +276,31 @@
   </footer>
 
   <section class="modal hidden">
+
     <div class="modal__cart">
+
       <div class="cart__top">
         <h2>Кошик</h2>
         <button id="close-btn"></button>
       </div>
-      <div class="cart__body">
-        <ul class="cart__list">
 
+      <div class="cart__body">
+
+        <ul class="cart__list">
+          <!--ADD PRODUCTS FROM JS-->
         </ul>
+
+        <div class="cart__price-block">
+          <p>Загальна сума</p>
+          <h4 class="price-block__total"></h4>
+        </div>
+
       </div>
+
       <div class="cart__bottom">
-        <a href="#" class="order">Оформити Замовлення</a>
+        <a href="/order" class="order">Оформити Замовлення</a>
       </div>
+
     </div>
   </section>
 

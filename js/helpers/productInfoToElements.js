@@ -40,19 +40,12 @@ const productInfoToElements = (product) => {
   productSlidePrice.classList.add('slide__price')
   productSlidePrice.innerHTML += '<span class="price-currency">$</span>'
 
-  // PRODUCT BUY CONTROL
-  const productControl = document.createElement('div')
-  productControl.classList.add('slide__buy-control')
-
-  const scalesBtn = document.createElement('button')
-  scalesBtn.classList.add('buy-control__btn-scales')
-
+  // CART BUTTON
   const cartBtn = document.createElement('button')
   cartBtn.classList.add('buy-control__btn-cart')
   cartBtn.onclick = async () => {await updateProductQuantity(product.id, (quantity) => quantity + 1)}
 
-  productControl.append(scalesBtn, cartBtn)
-  buyGroup.append(productSlidePrice, productControl)
+  buyGroup.append(productSlidePrice, cartBtn)
 
   return {
     swiperId,

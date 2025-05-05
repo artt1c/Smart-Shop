@@ -68,6 +68,7 @@
       .cart__item {
         display: flex;
         justify-content: space-between;
+        gap: 10px;
         padding-right: 10px;
         margin: 10px 20px;
         border-bottom: 1px solid variables.$gray;
@@ -76,13 +77,93 @@
           border-bottom: none;
         }
 
+        img {
+          width: 80px;
+          height: 80px;
+        }
+
         .item__details {
           flex-grow: 1;
         }
 
-        img {
-          width: 80px;
-          height: 80px;
+        .item__actions {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: flex-end;
+          min-width: 120px;
+          .actions__price {
+            width: fit-content;
+            font-size: 1.3rem;
+            font-weight: bold;
+          }
+
+          .actions__quantity-actions {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            height: 25px;
+
+            input {
+              width: 30px;
+              height: 25px;
+              border: none;
+              border-top: 1px solid variables.$gray;
+              border-bottom: 1px solid variables.$gray;
+              text-align: center;
+              font-size: 1.2rem;
+            }
+            button {
+              appearance: none;
+              width: 25px;
+              height: 25px;
+              background-color: transparent;
+              border: 1px solid variables.$gray;
+              outline: none;
+              font-size: 1.5rem;
+              cursor: pointer;
+              background-size: 80%;
+              background-repeat: no-repeat;
+              background-position: center;
+
+              &:first-child {
+                border-radius: 8px 0 0 8px;
+                background-image: url('/img/icons/minus.svg');
+              }
+              &:last-child {
+                border-radius: 0 8px 8px 0;
+                background-image: url('/img/icons/plus.svg');
+              }
+            }
+          }
+
+        }
+      }
+    }
+
+    .cart__price-block {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      padding-right: 10px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+
+      p {
+        margin-right: 10px;
+      }
+
+      h4 {
+        font-size: 1.3rem;
+        font-weight: bold;
+        line-height: normal;
+
+        &::after {
+          content: "$";
+          width: 100%;
+          height: 100%;
+          font-weight: normal;
         }
       }
     }

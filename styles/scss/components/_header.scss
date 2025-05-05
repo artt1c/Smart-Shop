@@ -111,26 +111,18 @@
       }
     }
   }
-
-  .header__user-panel {
-    .user-panel__list {
-      display: flex;
-      gap: 20px;
-    }
-    .user-panel__item {
-      a, button {
-        appearance: none;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: transparent;
-        outline: none;
-        border: none;
-        color: variables.$dark-gray;
-        font-size: .8rem;
-        text-decoration: none;
-      }
-    }
-
+  #cartBtn {
+    appearance: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 5vw;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: variables.$dark-gray;
+    font-size: .8rem;
+    text-decoration: none;
+    cursor: pointer;
   }
 }
