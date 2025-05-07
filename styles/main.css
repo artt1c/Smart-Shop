@@ -467,7 +467,7 @@ footer .container ul .footer__mail::before {
   background-image: url("/img/icons/plus.svg");
 }
 .modal__cart .cart__price-block {
-  display: flex;
+  display: none;
   justify-content: flex-end;
   align-items: flex-end;
   padding-right: 10px;
