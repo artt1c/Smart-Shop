@@ -1,4 +1,4 @@
-import {createCartList} from "../utils/createCartList.js";
+import {createCartList} from "./createCartList.js";
 
 export const modalAttachEvents = () => {
 

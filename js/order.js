@@ -1,5 +1,5 @@
 import storage from "./services/storage.service.js";
-import {modalAttachEvents} from "./helpers/attachEvents.js";
+import {modalAttachEvents} from "./utils/attachEvents.js";
 
 const renderOrderItem = (item) => {
   const itemLi = document.createElement('li');
@@ -95,11 +95,9 @@ const validateForm = (event) => {
   renderOrderItems();
 
   document.getElementsByClassName('modal')[0].addEventListener('click', () => {
-    console.log('rerender')
     renderOrderItems();
   })
   document.getElementById('close-btn').addEventListener('click', () => {
-    console.log('rerender')
     renderOrderItems();
   })
 
