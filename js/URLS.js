@@ -4,7 +4,8 @@ export const urls = {
   products: {
     basePath: '/products',
     categoriesList: '/products/categories',
-    category: '/products/category'
+    category: '/products/category',
+    search: '/products/search?q='
   },
   auth: {
     basePath: '/auth',

@@ -2,6 +2,7 @@ import createTopProductsItemsForList from "./utils/createTopProductsItemsForSwip
 import fetchDataForHomePage, {addMoreProducts} from "./utils/fetchDataForHomePage.js";
 import createAllProductsForList from "./utils/createAllProductsForList.js";
 import {modalAttachEvents} from "./utils/attachEvents.js";
+import searchInit from "./utils/search.js";
 
 
 (async function () {
@@ -19,6 +20,8 @@ import {modalAttachEvents} from "./utils/attachEvents.js";
     })
 
     modalAttachEvents()
+
+    searchInit()
 
   } catch (e) {
     console.error(e)
