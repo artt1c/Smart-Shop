@@ -1,0 +1,23 @@
+@use "../variables";
+
+.search__response {
+  position: absolute;
+  top: 47px;
+  left: 0;
+  width: 100%;
+  padding: 5px 15px !important;
+  background-color: variables.$primary-background;
+  border: 2px variables.$gray solid;
+  border-radius: 8px;
+  z-index: 10;
+
+  .response__not-found {
+    color: variables.$dark-gray;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.3rem;
+  }
+  .search__response-list {
+  }
+
+}

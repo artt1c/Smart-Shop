@@ -69,13 +69,14 @@
   }
 
   &__search {
+    position: relative;
     flex-grow: 1;
     margin: 0 8vw 0 10vw;
-    border: 2px solid variables.$secondary;
-    border-radius: 8px;
 
     .search__form {
       display: flex;
+      border: 2px solid variables.$secondary;
+      border-radius: 8px;
 
       .search__label {
         flex-grow: 2;

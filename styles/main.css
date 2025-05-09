@@ -60,13 +60,14 @@
   border-radius: 16px;
 }
 .header__search {
+  position: relative;
   flex-grow: 1;
   margin: 0 8vw 0 10vw;
-  border: 2px solid #d74f34;
-  border-radius: 8px;
 }
 .header__search .search__form {
   display: flex;
+  border: 2px solid #d74f34;
+  border-radius: 8px;
 }
 .header__search .search__form .search__label {
   flex-grow: 2;
@@ -505,6 +506,23 @@ footer .container ul .footer__mail::before {
   margin-top: 10px;
 }
 
+.search__response {
+  position: absolute;
+  top: 47px;
+  left: 0;
+  width: 100%;
+  padding: 5px 15px !important;
+  background-color: #fff;
+  border: 2px #9e9e9e solid;
+  border-radius: 8px;
+  z-index: 10;
+}
+.search__response .response__not-found {
+  color: #616161;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.3rem;
+}
 .home-page__main {
   display: flex;
   gap: 10px;

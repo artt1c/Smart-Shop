@@ -19,9 +19,10 @@ import searchInit from "./utils/search.js";
       await createAllProductsForList()
     })
 
+    searchInit()
+
     modalAttachEvents()
 
-    searchInit()
 
   } catch (e) {
     console.error(e)
