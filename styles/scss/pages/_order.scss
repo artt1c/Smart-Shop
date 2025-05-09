@@ -1,0 +1,201 @@
+@use '../variables';
+
+.order__header {
+  display: flex;
+  justify-content: space-around;
+  width: 100vw;
+  padding: 20px 10vw 15px;
+  background-color: variables.$primary-background;
+  -webkit-box-shadow: 0 10px 8px -8px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0 10px 8px -8px rgba(34, 60, 80, 0.2);
+  box-shadow: 0 10px 8px -8px rgba(34, 60, 80, 0.2);
+
+  h2 {
+    color: variables.$secondary;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+
+.order__main {
+  display: flex;
+  justify-content: center;
+  gap: 5vw;
+  margin: 5vh auto;
+
+  & section {
+    height: fit-content;
+    padding: 10px;
+    background-color: variables.$primary-background;
+    border: 2px solid variables.$secondary;
+    border-radius: 16px;
+
+    h3 {
+      width: fit-content;
+      padding: 2px 8px 3px;
+      margin-bottom: 10px;
+      background-color: variables.$active;
+      border-radius: 10px;
+      color: variables.$primary-light;
+    }
+  }
+
+  .order__form-wrapper {
+    .form__section {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin-bottom: 10px;
+
+      .form__group {
+        margin: 5px 0;
+      }
+    }
+
+    label {
+      display: block;
+      margin-left: 5px;
+      color: variables.$dark-gray;
+      font-size: 0.75rem;
+      line-height: 14px;
+    }
+
+    input {
+      box-sizing: unset;
+      width: 400px;
+      height: 20px;
+      padding: 8px 12px;
+      margin: 5px 0;
+      border-radius: 8px;
+      outline: none;
+      border: 1px solid variables.$dark-gray;
+      color: variables.$primary;
+      line-height: 20px;
+
+      &:focus {
+        outline: 1px solid black;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+      }
+    }
+
+    .form__submit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 auto 5px;
+
+      img {
+        width: 50px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: transform .2s ease-in;
+        filter: grayscale(100%) contrast(100%) invert(.3);
+
+        &:hover {
+          transition: transform .2s ease-in;
+          transform: scaleY(1.1) rotate(10deg) translateY(10px);
+        }
+      }
+
+      #submit-btn {
+        appearance: none;
+        width: fit-content;
+        padding: 5px 10px 6px;
+        background-color: variables.$secondary;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        border-radius: 10px;
+        color: variables.$primary-light;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-decoration: none;
+        transition: transform .2s ease-in, background-color .2s ease-in;
+
+        &:hover {
+          transition: transform .2s ease-in, background-color .2s ease-in;
+          transform: scale(1.03);
+          background-color: variables.$active;
+          box-shadow: 0 0 5px 0 rgba(0,0,0,.25);
+        }
+      }
+    }
+  }
+
+  .order__list-wrapper {
+
+    .order__top {
+      display: flex;
+      justify-content: space-between;
+
+      #cartBtn {
+        position: relative;
+        appearance: none;
+        height: 30px;
+        padding-left: 5px;
+        padding-right: 25px;
+        background-color: transparent;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+
+        &::after {
+          position: absolute;
+          top: 7px;
+          right: 4px;
+          display: block;
+          content: "";
+          width: 17px;
+          height: 17px;
+          background-image: url('/img/icons/arrow-right-fill.svg');
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+
+        &:hover {
+          background-color: rgba(215, 79, 52, .2);
+        }
+      }
+    }
+
+    .order__list {
+      overflow-y: auto;
+      max-height: 60vh;
+
+      .order__item {
+        display: flex;
+        gap: 10px;
+        padding-right: 10px;
+        margin: 10px 20px;
+        border-bottom: 1px solid variables.$gray;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        img {
+          width: 80px;
+          height: 80px;
+        }
+
+        .item__details {
+          flex-grow: 1;
+        }
+      }
+    }
+
+    .order__total {
+      padding: 10px;
+      margin-top: 20px;
+      border-radius: 8px;
+      background-color: rgba(0,0,0,.15);
+      text-align: center;
+
+      .total__amount {
+        font-weight: bold;
+      }
+    }
+  }
+}

@@ -17,56 +17,100 @@
   <link rel="manifest" href="../favicon/site.webmanifest">
 
   <link rel="stylesheet" href="../styles/main.css">
+
   <script src="../js/order.js" type="module" defer></script>
 </head>
 <body>
-<div class="container">
-  <main class="order-page">
-    <h1>Оформлення замовлення</h1>
+  <header class="order__header">
+    <a href="../index.html" class="header__logo">
+      <img src="../img/header-component/otak-logo.svg" alt="otak logo">
+    </a>
 
-    <form id="orderForm" class="order-form">
-      <div class="form-section">
-        <h2>Контактні дані</h2>
-        <div class="form-group">
-          <label for="name">Ім'я*</label>
-          <input type="text" id="name" name="name" required>
+    <h2>Оформлення замовлення</h2>
+  </header>
+
+  <main class="order__main">
+
+    <section class="order__form-wrapper">
+      <form id="orderForm" class="order__form">
+        <div class="form__section">
+          <h3>Контактні дані</h3>
+          <div class="form__group">
+            <label for="name">Прізвище ім'я</label>
+            <input type="text" id="name" name="name" placeholder="ПІБ" required>
+          </div>
+          <div class="form__group">
+            <label for="phone">Мобільний телефон</label>
+            <input type="tel" id="phone" name="phone" placeholder="+380992345670" required>
+          </div>
+          <div class="form__group">
+            <label for="email"> Електронна пошта </label>
+            <input type="email" id="email" name="email" placeholder="example@mail.com">
+          </div>
         </div>
-        <div class="form-group">
-          <label for="phone">Телефон*</label>
-          <input type="tel" id="phone" name="phone" required>
+
+        <div class="form__section">
+          <h3>Доставка</h3>
+          <div class="form__group">
+            <label for="city">Місто</label>
+            <input type="text" id="city" name="city" placeholder="Київ" required>
+          </div>
+          <div class="form__group">
+            <label for="address">Адреса</label>
+            <input type="text" id="address" name="address" placeholder="вул. Промислова 71" required>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email">
+
+        <div class="form__submit">
+          <label for="submit-btn">
+            <img src="../img/icons/arrow-down.svg" class="submit-img" alt="arrow down">
+          </label>
+          <button type="submit" id="submit-btn">Підтвердити замовлення</button>
         </div>
+      </form>
+    </section>
+
+    <section class="order__list-wrapper">
+      <div class="order__top">
+        <h3>Товари</h3>
+        <button id="cartBtn">Редагувати товари</button>
       </div>
-
-      <div class="form-section">
-        <h2>Доставка</h2>
-        <div class="form-group">
-          <label for="city">Місто*</label>
-          <input type="text" id="city" name="city" required>
-        </div>
-        <div class="form-group">
-          <label for="address">Адреса*</label>
-          <input type="text" id="address" name="address" required>
-        </div>
+      <ul id="orderItems" class="order__list">
+        <!-- Order items will be inserted here -->
+      </ul>
+      <div class="order__total">
+        <span class="total__quantity">1</span>
+        <span>шт. Загальна сума:</span>
+        <span class="total__amount">0.00 ₴</span>
       </div>
-
-      <div class="form-section">
-        <h2>Замовлення</h2>
-        <div id="orderItems" class="order-items">
-          <!-- Order items will be inserted here -->
-        </div>
-        <div class="order-total">
-          <span>Загальна сума:</span>
-          <span id="totalAmount">0.00 ₴</span>
-        </div>
-      </div>
-
-      <button type="submit" class="submit-btn">Підтвердити замовлення</button>
-    </form>
+    </section>
   </main>
-</div>
+
+  <section class="modal hidden">
+
+    <div class="modal__cart">
+
+      <div class="cart__top">
+        <h2>Кошик</h2>
+        <button id="close-btn"></button>
+      </div>
+
+      <div class="cart__body">
+
+        <div class="cart__list-wrapper">
+          <ul class="cart__list">
+            <!--ADD PRODUCTS FROM JS-->
+          </ul>
+        </div>
+
+        <div class="cart__price-block">
+          <p>Загальна сума</p>
+          <h4 class="price-block__total"></h4>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
 </body>
 </html>

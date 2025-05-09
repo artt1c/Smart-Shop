@@ -188,6 +188,10 @@ const storage = {
     },
 
     get: () => handleStorage.get('cart', false),
+
+    deleteCart: () => {
+      handleStorage.remove('cart');
+    }
   }
 }
 

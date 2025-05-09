@@ -23,7 +23,7 @@
     h2, .order {
       width: fit-content;
       padding: 4px 10px 5px;
-      background-color: variables.$active;
+      background-color: variables.$secondary;
       border-radius: 10px;
       color: variables.$primary-light;
       font-size: 1.2rem;
@@ -31,6 +31,11 @@
     .order {
       font-weight: bold;
       text-decoration: none;
+
+      &:hover {
+        background-color: variables.$active;
+        box-shadow: 0 0 5px 0 rgba(0,0,0,.25);
+      }
     }
 
     .cart__top {
@@ -60,85 +65,92 @@
       }
     }
 
-    .cart__list {
-      list-style: none;
+    .cart__list-wrapper {
       border: 2px solid variables.$secondary;
       border-radius: 16px;
+      padding: 5px;
 
-      .cart__item {
-        display: flex;
-        justify-content: space-between;
-        gap: 10px;
-        padding-right: 10px;
-        margin: 10px 20px;
-        border-bottom: 1px solid variables.$gray;
+      .cart__list {
+        list-style: none;
+        overflow-y: auto;
+        max-height: 60vh;
 
-        &:last-child {
-          border-bottom: none;
-        }
-
-        img {
-          width: 80px;
-          height: 80px;
-        }
-
-        .item__details {
-          flex-grow: 1;
-        }
-
-        .item__actions {
+        .cart__item {
           display: flex;
-          flex-direction: column;
           justify-content: space-between;
-          align-items: flex-end;
-          min-width: 120px;
-          .actions__price {
-            width: fit-content;
-            font-size: 1.3rem;
-            font-weight: bold;
+          gap: 10px;
+          padding-right: 10px;
+          margin: 10px 20px;
+          border-bottom: 1px solid variables.$gray;
+
+          &:last-child {
+            border-bottom: none;
           }
 
-          .actions__quantity-actions {
+          img {
+            width: 80px;
+            height: 80px;
+          }
+
+          .item__details {
+            flex-grow: 1;
+          }
+
+          .item__actions {
             display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            height: 25px;
-
-            input {
-              width: 30px;
-              height: 25px;
-              border: none;
-              border-top: 1px solid variables.$gray;
-              border-bottom: 1px solid variables.$gray;
-              text-align: center;
-              font-size: 1.2rem;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-end;
+            min-width: 120px;
+            .actions__price {
+              width: fit-content;
+              font-size: 1.3rem;
+              font-weight: bold;
             }
-            button {
-              appearance: none;
-              width: 25px;
-              height: 25px;
-              background-color: transparent;
-              border: 1px solid variables.$gray;
-              outline: none;
-              font-size: 1.5rem;
-              cursor: pointer;
-              background-size: 80%;
-              background-repeat: no-repeat;
-              background-position: center;
 
-              &:first-child {
-                border-radius: 8px 0 0 8px;
-                background-image: url('/img/icons/minus.svg');
+            .actions__quantity-actions {
+              display: flex;
+              align-items: center;
+              margin-bottom: 10px;
+              height: 25px;
+
+              input {
+                width: 30px;
+                height: 25px;
+                border: none;
+                border-top: 1px solid variables.$gray;
+                border-bottom: 1px solid variables.$gray;
+                text-align: center;
+                font-size: 1.2rem;
               }
-              &:last-child {
-                border-radius: 0 8px 8px 0;
-                background-image: url('/img/icons/plus.svg');
+              button {
+                appearance: none;
+                width: 25px;
+                height: 25px;
+                background-color: transparent;
+                border: 1px solid variables.$gray;
+                outline: none;
+                font-size: 1.5rem;
+                cursor: pointer;
+                background-size: 80%;
+                background-repeat: no-repeat;
+                background-position: center;
+
+                &:first-child {
+                  border-radius: 8px 0 0 8px;
+                  background-image: url('/img/icons/minus.svg');
+                }
+                &:last-child {
+                  border-radius: 0 8px 8px 0;
+                  background-image: url('/img/icons/plus.svg');
+                }
               }
             }
+
           }
-
         }
       }
+
     }
 
     .cart__price-block {

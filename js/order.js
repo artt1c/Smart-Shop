@@ -1,39 +1,45 @@
 import storage from "./services/storage.service.js";
+import {modalAttachEvents} from "./helpers/attachEvents.js";
 
-function renderOrderItem(item) {
-  const itemDiv = document.createElement('div');
-  itemDiv.className = 'order-item';
+const renderOrderItem = (item) => {
+  const itemLi = document.createElement('li');
+  itemLi.className = 'order__item';
 
-  itemDiv.innerHTML = `
+  itemLi.innerHTML = `
         <img src="${item.images}" alt="${item.title}">
-        <div class="item-details">
-            <h3>${item.title}</h3>
+        <div class="item__details">
+            <h4>${item.title}</h4>
             <p>Кількість: ${item.quantity}</p>
         </div>
-        <div class="item-price">${(item.price * item.quantity).toFixed(2)} $</div>
+        <div class="item__price">${item.price.toFixed(2)} $</div>
     `;
 
-  return itemDiv;
+  return itemLi;
 }
 
-function renderOrderItems() {
-  const orderItems = document.getElementById('orderItems');
-  const totalAmount = document.getElementById('totalAmount');
+const renderOrderItems = () => {
+  const orderItems = document.getElementsByClassName('order__list')[0];
+  const totalPriceElement = document.getElementsByClassName('total__amount')[0];
+  const totalQuantityElement = document.getElementsByClassName('total__quantity')[0];
   const cartItems = storage.cart.get() || [];
 
   orderItems.innerHTML = '';
-  let total = 0;
+  let totalPrice = 0;
+  let totalQuantity = 0;
 
   cartItems.forEach(item => {
     const itemElement = renderOrderItem(item);
     orderItems.appendChild(itemElement);
-    total += item.price * item.quantity;
+
+    totalPrice += item.price * item.quantity;
+    totalQuantity += item.quantity;
   });
 
-  totalAmount.textContent = `${total.toFixed(2)} $`;
+  totalPriceElement.textContent = `${totalPrice.toFixed(2)} $`;
+  totalQuantityElement.textContent = totalQuantity;
 }
 
-async function handleSubmit(event) {
+const handleSubmit = async (event) => {
   event.preventDefault();
   const cartItems = storage.cart.get() || [];
   console.log(cartItems);
@@ -60,7 +66,6 @@ async function handleSubmit(event) {
     console.log('Замовлення успішно створено:', result);
     alert('Замовлення успішно оформлено!');
 
-    // Очищуємо кошик та перенаправляємо на головну
     storage.cart.remove('cart');
     window.location.href = '/';
 
@@ -70,11 +75,10 @@ async function handleSubmit(event) {
   }
 }
 
-function validateForm(event) {
+const validateForm = (event) => {
   const form = event.target;
   const phone = form.phone.value;
 
-  // Базова валідація телефону
   const phoneRegex = /^\+?\d{10,13}$/;
   if (!phoneRegex.test(phone)) {
     alert('Будь ласка, введіть коректний номер телефону');
@@ -85,19 +89,26 @@ function validateForm(event) {
   return true;
 }
 
-function initOrderPage() {
+(() => {
   const form = document.getElementById('orderForm');
 
-  // Рендеримо товари з кошика
   renderOrderItems();
 
-  // Додаємо обробники подій
+  document.getElementsByClassName('modal')[0].addEventListener('click', () => {
+    console.log('rerender')
+    renderOrderItems();
+  })
+  document.getElementById('close-btn').addEventListener('click', () => {
+    console.log('rerender')
+    renderOrderItems();
+  })
+
   form.addEventListener('submit', async (event) => {
     if (validateForm(event)) {
       await handleSubmit(event);
+      storage.cart.deleteCart();
     }
   });
-}
+})()
 
-// Ініціалізуємо сторінку
-document.addEventListener('DOMContentLoaded', initOrderPage);
+modalAttachEvents();
