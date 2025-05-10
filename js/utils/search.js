@@ -26,13 +26,11 @@ const searchInit = () => {
         productTemplate.classList.add('search__response-item')
         productTemplate.href = `product.html?id=${product.id}`
         productTemplate.innerHTML = `
-          <div class="search__response-item-img">
+          <div class="item__img">
             <img src="${product.images[0]}" alt="${product.title}">
           </div>
-          <div class="search__response-item-details">
-            <h3 class="search__response-item-title">${product.title}</h3>
-            <p class="search__response-item-price">${product.price} $</p>
-          </div>
+          <h3 class="item__title">${product.title}</h3>
+          <p class="item__price">${product.price} $</p>
         `
 
         searchResponseList.appendChild(productTemplate)
