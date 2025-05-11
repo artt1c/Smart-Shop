@@ -11,6 +11,7 @@
 @use "components/modal-search-response";
 
 @use "pages/home";
+@use "pages/product";
 @use "pages/order";
 
 /* ===================================
@@ -169,6 +170,15 @@ body {
   &:hover {
     box-shadow: 0 0 32px 0 rgba(50,50,50,0.15);
     z-index: 7;
+  }
+
+  a {
+    color: variables.$dark-gray;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   img {

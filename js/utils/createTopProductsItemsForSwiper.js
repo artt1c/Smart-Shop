@@ -16,7 +16,7 @@ const createProductsItemsForList = async () => {
 
   // BUILD SLIDES
   topProducts.forEach(product => {
-    const productTemplate = document.createElement('a')
+    const productTemplate = document.createElement('div')
     productTemplate.classList.add('swiper-slide', 'products__slide', 'top-products__slide')
 
     // CREATE PRODUCT INFO ELEMENTS

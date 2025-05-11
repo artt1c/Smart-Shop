@@ -3,15 +3,21 @@ import {updateProductQuantity} from "../utils/fetchDataForHomePage.js";
 
 const productInfoToElements = (product) => {
   // IMG BLOCK
+  const productImgLink = document.createElement('a')
+  productImgLink.href = `product.html?id=${product.id}`
   const {swiperId, swiperMainElement:swiperBlock} = swiperStructureForImage(product.images);
+  productImgLink.appendChild(swiperBlock)
 
   // TITLE
+  const productTitleLink = document.createElement('a')
+  productTitleLink.href = `product.html?id=${product.id}`
   const productSlideTitle = document.createElement('h4')
   productSlideTitle.textContent = product.title
+  productTitleLink.appendChild(productSlideTitle)
 
   // FEEDBACK SECTION
   const feedbackSectionLink = document.createElement('a')
-  feedbackSectionLink.href = '#';
+  feedbackSectionLink.href = `product.html?id=${product.id}#comments`
   feedbackSectionLink.classList.add('slide__feedback-link')
 
   const feedbackSection = document.createElement('div')
@@ -49,7 +55,7 @@ const productInfoToElements = (product) => {
 
   return {
     swiperId,
-    elements: [swiperBlock, productSlideTitle, feedbackSectionLink, buyGroup]
+    elements: [productImgLink, productTitleLink, feedbackSectionLink, buyGroup]
   }
 }
 

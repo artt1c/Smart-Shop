@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Завантаження...</title>
+
+  <!--FONTS-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+  <!--FAVICONS-->
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
+
+  <!--SWIPER-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <link rel="stylesheet" href="styles/main.css">
+
+  <script src="js/product.js" type="module" defer></script>
+</head>
+<body>
+<header class="header">
+  <ul class="header__list">
+
+    <li class="header__item header__category">
+      <a href="index.html" class="header__logo">
+        <img src="img/otak-logo.svg" alt="otak logo">
+      </a>
+    </li>
+
+    <li class="header__item header__search">
+      <form name="search" class="search__form">
+        <label for="form__input" class="search__label">
+          <img src="img/icons/search.svg" alt="search icon">
+          <input type="search" name="searchParams" id="form__input" placeholder="Пошук товарів">
+        </label>
+        <button>Знайти</button>
+      </form>
+
+      <div class="search__response hidden">
+        <p class="response__not-found">Нічого не знайдено</p>
+        <ul class="search__response-list">
+          <!--ADD PRODUCTS FROM JS-->
+        </ul>
+      </div>
+    </li>
+
+    <li class="header__item header__user-panel">
+      <button id="cartBtn">
+        <img src="img/icons/cart.svg" alt="корзина">
+        <span>корзина</span>
+      </button>
+    </li>
+  </ul>
+</header>
+
+<main class="product__main container">
+  <div class="product__container">
+    <div class="product__images-gallery">
+
+      <div class="images-gallery__main-image">
+        <!--ADD MAIN IMG SWIPER-->
+      </div>
+      <div class="thumbnail-images">
+          <!-- ADD THUMBS IMG SWIPER -->
+      </div>
+
+    </div>
+<!--    <div class="product-details">-->
+<!--      <h1 id="product-title">Назва товару</h1>-->
+<!--      <p class="product-category" id="product-category"></p>-->
+<!--      <p class="product-description" id="product-description"></p>-->
+<!--      <div class="product-price-section">-->
+<!--        <span class="current-price" id="product-price"></span>-->
+<!--        <span class="original-price" id="product-original-price"></span>-->
+<!--        <span class="discount" id="product-discount"></span>-->
+<!--      </div>-->
+<!--      <p class="product-rating">Рейтинг: <span id="product-rating"></span></p>-->
+<!--      <p class="product-stock">В наявності: <span id="product-stock"></span> (<span id="product-availability"></span>)</p>-->
+<!--      <p class="product-brand">Бренд: <span id="product-brand"></span></p>-->
+<!--      <p class="product-sku">Артикул: <span id="product-sku"></span></p>-->
+<!--      <button class="add-to-cart-btn" id="add-to-cart-btn">Додати в кошик</button>-->
+<!--    </div>-->
+  </div>
+
+<!--  <div class="product-additional-info">-->
+<!--    <h2>Додаткова інформація</h2>-->
+<!--    <p><strong>Вага:</strong> <span id="product-weight"></span> kg</p>-->
+<!--    <p><strong>Розміри (ШхВхГ):</strong> <span id="product-dimensions"></span> cm</p>-->
+<!--    <p><strong>Гарантія:</strong> <span id="product-warranty"></span></p>-->
+<!--    <p><strong>Інформація про доставку:</strong> <span id="product-shipping"></span></p>-->
+<!--    <p><strong>Політика повернення:</strong> <span id="product-return-policy"></span></p>-->
+<!--    <p><strong>Мінімальна кількість для замовлення:</strong> <span id="product-min-order"></span></p>-->
+<!--  </div>-->
+
+<!--  <div class="product-reviews" id="comments">-->
+<!--    <h2>Відгуки</h2>-->
+<!--    <div id="reviews-container">-->
+<!--      &lt;!&ndash; Сюди будуть додані відгуки &ndash;&gt;-->
+<!--    </div>-->
+<!--  </div>-->
+</main>
+
+<footer>
+  <div class="container">
+      <span class="coppy">
+        &copy Всі права захищені
+      </span>
+    <ul>
+      <li>
+        <a href="https://t.me/otak_support_ua" target="_blank" class="footer__telegram">
+          Не знайшли товар? Напишіть нам ➔
+        </a>
+      </li>
+      <li>
+        <a href="tel:tel:0800305400" class="footer__tel"></a>
+      </li>
+      <li>
+        <a href="mailto:support@otak.ua" class="footer__mail"></a>
+      </li>
+    </ul>
+  </div>
+</footer>
+
+<section class="modal hidden">
+
+  <div class="modal__cart">
+
+    <div class="cart__top">
+      <h2>Кошик</h2>
+      <button id="close-btn"></button>
+    </div>
+
+    <div class="cart__body">
+
+      <div class="cart__list-wrapper">
+        <ul class="cart__list">
+          <!--ADD PRODUCTS FROM JS-->
+        </ul>
+      </div>
+
+      <div class="cart__price-block">
+        <p>Загальна сума</p>
+        <h4 class="price-block__total"></h4>
+      </div>
+    </div>
+
+    <div class="cart__bottom">
+      <a href="order.html" class="order">Оформити Замовлення</a>
+    </div>
+
+  </div>
+
+</section>
+
+</body>
+</html>

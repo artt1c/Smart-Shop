@@ -1,5 +1,6 @@
 import storage from "./services/storage.service.js";
 import {modalAttachEvents} from "./utils/attachEvents.js";
+import apiService from "./services/api.service.js";
 
 const renderOrderItem = (item) => {
   const itemLi = document.createElement('li');
@@ -44,35 +45,7 @@ const handleSubmit = async (event) => {
   const cartItems = storage.cart.get() || [];
   console.log(cartItems);
 
-  const orderData = {
-    userId: 1, // for dev, fake API
-    products: cartItems, // for dev, fake API
-  };
-
-  try {
-    const response = await fetch('https://dummyjson.com/carts/add', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(orderData)
-    });
-
-    if (!response.ok) {
-      throw new Error('Помилка при відправці замовлення');
-    }
-
-    const result = await response.json();
-    console.log('Замовлення успішно створено:', result);
-    alert('Замовлення успішно оформлено!');
-
-    storage.cart.remove('cart');
-    window.location.href = '/';
-
-  } catch (error) {
-    console.error('Помилка:', error);
-    alert('Виникла помилка при оформленні замовлення. Спробуйте пізніше.');
-  }
+  await apiService.order.postOrder({userId: 1, products: cartItems})
 }
 
 const validateForm = (event) => {
@@ -92,6 +65,7 @@ const validateForm = (event) => {
 (() => {
   const form = document.getElementById('orderForm');
 
+  modalAttachEvents();
   renderOrderItems();
 
   document.getElementsByClassName('modal')[0].addEventListener('click', () => {
@@ -109,4 +83,3 @@ const validateForm = (event) => {
   });
 })()
 
-modalAttachEvents();

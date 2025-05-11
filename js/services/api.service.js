@@ -1,4 +1,5 @@
-import {baseUrl, urls} from "../URLS.js";
+import {baseUrl, urls} from "../urls/URLS.js";
+import storage from "./storage.service.js";
 
 const selectParams = 'select=title,price,rating,reviews,images'
 
@@ -85,6 +86,35 @@ const ApiService = {
         return response.json();
       } catch (e) {
         console.error(e)
+      }
+    }
+  },
+
+  order: {
+    postOrder: async (orderData) => {
+      try {
+        const response = await fetch(baseUrl + urls.card.add, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(orderData)
+        });
+
+        if (!response.ok) {
+          throw new Error('Помилка при відправці замовлення');
+        }
+
+        const result = await response.json();
+        console.log('Замовлення успішно створено:', result);
+        alert('Замовлення успішно оформлено!');
+
+        storage.cart.remove('cart');
+        window.location.href = '/';
+
+      } catch (error) {
+        console.error('Помилка:', error);
+        alert('Виникла помилка при оформленні замовлення. Спробуйте пізніше.');
       }
     }
   }

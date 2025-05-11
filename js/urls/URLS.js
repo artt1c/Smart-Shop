@@ -7,6 +7,9 @@ export const urls = {
     category: '/products/category',
     search: '/products/search?q='
   },
+  card: {
+    add: '/cart/add',
+  },
   auth: {
     basePath: '/auth',
     login: '/auth/login',
