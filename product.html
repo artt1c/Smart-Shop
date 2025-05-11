@@ -98,6 +98,7 @@
           </a>
         </div>
 
+
         <div class="product__buy-group">
           <div class="product_price">
             <div class="product_price-top">
@@ -106,31 +107,36 @@
             </div>
             <p class="current-price" id="product-price"></p>
           </div>
-          <button class="add-to-cart-btn" id="add-to-cart-btn">Додати в кошик</button>
+          <button class="add-to-cart-btn" id="add-to-cart-btn" disabled>Додати в кошик</button>
         </div>
 
-    <!--      <p class="product-category" id="product-category"></p>-->
-    <!--      <p class="product-description" id="product-description"></p>-->
-    <!--      <p class="product-brand">Бренд: <span id="product-brand"></span></p>-->
+        <div class="product__meta">
+          <a class="product-category" id="product-category"></a>
+          <p class="product-brand">Бренд: <span id="product-brand"></span></p>
+          <p class="product-description" id="product-description"></p>
+        </div>
+
+        <div class="product-additional-info">
+          <h2>Додаткова інформація</h2>
+          <p><strong>Вага:</strong> <span id="product-weight"></span></p>
+          <p><strong>Розміри (ШхВхГ):</strong> <span id="product-dimensions"></span></p>
+          <p><strong>Гарантія:</strong> <span id="product-warranty"></span></p>
+          <p><strong>Інформація про доставку:</strong> <span id="product-shipping"></span></p>
+          <p><strong>Політика повернення:</strong> <span id="product-return-policy"></span></p>
+          <p><strong>Мінімальна кількість для замовлення:</strong> <span id="product-min-order"></span></p>
+        </div>
+
       </div>
+
     </div>
 
-    <!--  <div class="product-additional-info">-->
-    <!--    <h2>Додаткова інформація</h2>-->
-    <!--    <p><strong>Вага:</strong> <span id="product-weight"></span> kg</p>-->
-    <!--    <p><strong>Розміри (ШхВхГ):</strong> <span id="product-dimensions"></span> cm</p>-->
-    <!--    <p><strong>Гарантія:</strong> <span id="product-warranty"></span></p>-->
-    <!--    <p><strong>Інформація про доставку:</strong> <span id="product-shipping"></span></p>-->
-    <!--    <p><strong>Політика повернення:</strong> <span id="product-return-policy"></span></p>-->
-    <!--    <p><strong>Мінімальна кількість для замовлення:</strong> <span id="product-min-order"></span></p>-->
-    <!--  </div>-->
 
-      <div class="product-reviews" id="comments">
-    <!--    <h2>Відгуки</h2>-->
-    <!--    <div id="reviews-container">-->
-    <!--      &lt;!&ndash; Сюди будуть додані відгуки &ndash;&gt;-->
-    <!--    </div>-->
+    <div class="product-reviews" id="comments">
+      <h2>Відгуки</h2>
+      <div id="reviews-container">
+        <!-- ADD REVIEWS FROM JS -->
       </div>
+    </div>
   </main>
 
   <footer>

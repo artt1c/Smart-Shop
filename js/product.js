@@ -2,6 +2,7 @@ import ApiService from "./services/api.service.js"
 import swiperStructureForImage from "./helpers/swiperStructureForImage.js"
 import {updateProductQuantity} from "./utils/fetchDataForHomePage.js";
 import {modalAttachEvents} from "./utils/attachEvents.js";
+import searchInit from "./utils/search.js";
 
 (() => {
 
@@ -18,18 +19,18 @@ import {modalAttachEvents} from "./utils/attachEvents.js";
   const discountElement = document.getElementById('product-discount')
   const addToCartBtn = document.getElementById('add-to-cart-btn')
 
-  // const categoryElement = document.getElementById('product-category')
-  // const descriptionElement = document.getElementById('product-description')
-  // const brandElement = document.getElementById('product-brand')
-  //
-  // const weightElement = document.getElementById('product-weight')
-  // const dimensionsElement = document.getElementById('product-dimensions')
-  // const warrantyElement = document.getElementById('product-warranty')
-  // const shippingElement = document.getElementById('product-shipping')
-  // const returnPolicyElement = document.getElementById('product-return-policy')
-  // const minOrderElement = document.getElementById('product-min-order')
-  //
-  // const reviewsContainer = document.getElementById('reviews-container')
+  const categoryElement = document.getElementById('product-category')
+  const descriptionElement = document.getElementById('product-description')
+  const brandElement = document.getElementById('product-brand')
+
+  const weightElement = document.getElementById('product-weight')
+  const dimensionsElement = document.getElementById('product-dimensions')
+  const warrantyElement = document.getElementById('product-warranty')
+  const shippingElement = document.getElementById('product-shipping')
+  const returnPolicyElement = document.getElementById('product-return-policy')
+  const minOrderElement = document.getElementById('product-min-order')
+
+  const reviewsContainer = document.getElementById('reviews-container')
 
   const getProductIdFromUrl = () => {
     const params = new URLSearchParams(window.location.search)
@@ -121,7 +122,10 @@ import {modalAttachEvents} from "./utils/attachEvents.js";
         В наявності:
         <span>${product.stock || '0'}</span>
       `
-    if(product.stock) stockElement.classList.add('inStock')
+    if(product.stock) {
+      stockElement.classList.add('inStock')
+      addToCartBtn.disabled = false
+    }
 
     if (product.rating) {
       ratingElement.innerHTML = renderRatingStars(product.rating);
@@ -130,9 +134,6 @@ import {modalAttachEvents} from "./utils/attachEvents.js";
     }
     reviewsCountElement.innerText = product.reviews.length
 
-    //   categoryElement.textContent = product.category || 'Категорія не вказана'
-  //   descriptionElement.textContent = product.description || 'Опис відсутній'
-  //
     if (product.price) {
       const discountedPrice = product.price * (1 - (product.discountPercentage || 0) / 100)
       priceElement.textContent = `${discountedPrice.toFixed(2)} $`
@@ -151,51 +152,58 @@ import {modalAttachEvents} from "./utils/attachEvents.js";
     }
 
     addToCartBtn.onclick = async () => {await updateProductQuantity(product.id, (quantity) => quantity + 1)}
-  //
-  //
-  //   brandElement.textContent = product.brand || 'Не вказано'
+
+    categoryElement.innerHTML = `Категорія: <strong>${product.category}</strong>` || 'Категорія не вказана'
+    if (product.category) {
+      categoryElement.href = `category.html?category=${product.category}`
+    }
+
+    descriptionElement.textContent = product.description || 'Опис відсутній'
+
+    brandElement.textContent = product.brand || 'Не вказано'
 
 
-  //   weightElement.textContent = product.weight ? `${product.weight} kg` : 'Не вказано'
-  //   if (product.dimensions) {
-  //     dimensionsElement.textContent = `${product.dimensions.width} x ${product.dimensions.height} x ${product.dimensions.depth}`
-  //   } else {
-  //     dimensionsElement.textContent = 'Не вказано'
-  //   }
-  //   warrantyElement.textContent = product.warrantyInformation || 'Не вказано'
-  //   shippingElement.textContent = product.shippingInformation || 'Не вказано'
-  //   returnPolicyElement.textContent = product.returnPolicy || 'Не вказано'
-  //   minOrderElement.textContent = product.minimumOrderQuantity || '1'
-  //
-  //   reviewsContainer.innerHTML = ''
-  //   if (product.reviews && product.reviews.length > 0) {
-  //     product.reviews.forEach(review => {
-  //       const reviewCard = document.createElement('div')
-  //       reviewCard.classList.add('review-card')
-  //       reviewCard.innerHTML = `
-  //                   <p class="reviewer-info">${review.reviewerName || 'Анонім'}</p>
-  //                   <p class="review-rating">Рейтинг: ${'&#9733'.repeat(review.rating)}${'&#9734'.repeat(5 - review.rating)}</p>
-  //                   <p class="review-comment">${review.comment || 'Без коментаря'}</p>
-  //                   <p class="review-date">${new Date(review.date).toLocaleDateString('uk-UA')}</p>
-  //               `
-  //       reviewsContainer.appendChild(reviewCard)
-  //     })
-  //   } else {
-  //     reviewsContainer.innerHTML = '<p>Відгуків про цей товар ще немає.</p>'
-  //   }
-  //
+    weightElement.textContent = product.weight ? `${product.weight} kg` : 'Не вказано'
+    if (product.dimensions) {
+      dimensionsElement.textContent = `${product.dimensions.width} x ${product.dimensions.height} x ${product.dimensions.depth}`
+    } else {
+      dimensionsElement.textContent = 'Не вказано'
+    }
+    warrantyElement.textContent = product.warrantyInformation || 'Не вказано'
+    shippingElement.textContent = product.shippingInformation || 'Не вказано'
+    returnPolicyElement.textContent = product.returnPolicy || 'Не вказано'
+    minOrderElement.textContent = product.minimumOrderQuantity || '1'
+
+    reviewsContainer.innerHTML = ''
+    if (product.reviews && product.reviews.length > 0) {
+      product.reviews.forEach(review => {
+        const reviewCard = document.createElement('div')
+        reviewCard.classList.add('review-card')
+        reviewCard.innerHTML = `
+                    <p class="reviewer-info">${review.reviewerName || 'Анонім'}</p>
+                    <p class="review-rating">Рейтинг: ${'&#9733'.repeat(review.rating)}${'&#9734'.repeat(5 - review.rating)}</p>
+                    <p class="review-comment">${review.comment || 'Без коментаря'}</p>
+                    <p class="review-date">${new Date(review.date).toLocaleDateString('uk-UA')}</p>
+                `
+        reviewsContainer.appendChild(reviewCard)
+      })
+    } else {
+      reviewsContainer.innerHTML = '<p>Відгуків про цей товар ще немає.</p>'
+    }
+
 
   }
 
   const initPage = async () => {
     const productId = getProductIdFromUrl()
     modalAttachEvents();
+    searchInit();
+
     if (productId) {
       try {
         const productData = await ApiService.product.getSingle(productId)
-
-
         renderProductData(productData)
+
       } catch (error) {
         console.error('Failed to load product:', error)
         document.title = "Помилка завантаження | ОТАК"

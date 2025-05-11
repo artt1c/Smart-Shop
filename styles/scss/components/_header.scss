@@ -25,7 +25,7 @@
     display: block;
 
     img {
-      width: 180px;
+      width: 190px;
       height: auto;
       border-radius: 16px;
     }
@@ -36,26 +36,6 @@
     align-items: center;
     gap: 5px;
   }
-
-  //.category__show-btn,
-    //.category__show-btn{
-  //  padding: 7px 20px 7px 15px;
-  //  font-size: 1rem;
-  //  background-color: variables.$secondary;
-  //  border: none;
-  //  outline: none;
-  //  border-radius: 8px;
-  //  color: variables.$primary-light;
-  //  font-weight: bold;
-  //  transition: background-color 0.3s;
-  //  &:hover {
-  //    background-color: variables.$active;
-  //    cursor: pointer;
-  //  }
-  //  img {
-  //    filter: invert(1);
-  //  }
-  //}
 
   &__search {
     position: relative;
