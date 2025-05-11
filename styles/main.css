@@ -610,7 +610,7 @@ footer .container ul .footer__mail::before {
   transition: border-color 0.3s ease, transform 0.2s ease;
 }
 .product__main .product__container .product__images-gallery .thumbnail-images .swiper-wrapper .swiper-slide img:hover {
-  border-color: rgb(221.3698630137, 52.602739726, 18.6301369863);
+  border-color: #ee5435;
   transform: scale(1.05);
 }
 .product__main .product__container .product__images-gallery .thumbnail-images .swiper-wrapper .swiper-slide-thumb-active {
