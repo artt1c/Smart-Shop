@@ -25,108 +25,136 @@
   <script src="js/product.js" type="module" defer></script>
 </head>
 <body>
-<header class="header">
-  <ul class="header__list">
 
-    <li class="header__item header__category">
-      <a href="index.html" class="header__logo">
-        <img src="img/otak-logo.svg" alt="otak logo">
-      </a>
-    </li>
+<div class="page-wrapper">
 
-    <li class="header__item header__search">
-      <form name="search" class="search__form">
-        <label for="form__input" class="search__label">
-          <img src="img/icons/search.svg" alt="search icon">
-          <input type="search" name="searchParams" id="form__input" placeholder="Пошук товарів">
-        </label>
-        <button>Знайти</button>
-      </form>
+  <header class="header">
+    <ul class="header__list">
 
-      <div class="search__response hidden">
-        <p class="response__not-found">Нічого не знайдено</p>
-        <ul class="search__response-list">
-          <!--ADD PRODUCTS FROM JS-->
-        </ul>
-      </div>
-    </li>
+      <li class="header__item header__category">
+        <a href="index.html" class="header__logo">
+          <img src="img/otak-logo.svg" alt="otak logo">
+        </a>
+      </li>
 
-    <li class="header__item header__user-panel">
-      <button id="cartBtn">
-        <img src="img/icons/cart.svg" alt="корзина">
-        <span>корзина</span>
-      </button>
-    </li>
-  </ul>
-</header>
+      <li class="header__item header__search">
+        <form name="search" class="search__form">
+          <label for="form__input" class="search__label">
+            <img src="img/icons/search.svg" alt="search icon">
+            <input type="search" name="searchParams" id="form__input" placeholder="Пошук товарів">
+          </label>
+          <button>Знайти</button>
+        </form>
 
-<main class="product__main container">
-  <div class="product__container">
-    <div class="product__images-gallery">
+        <div class="search__response hidden">
+          <p class="response__not-found">Нічого не знайдено</p>
+          <ul class="search__response-list">
+            <!--ADD PRODUCTS FROM JS-->
+          </ul>
+        </div>
+      </li>
 
-      <div class="images-gallery__main-image">
-        <!--ADD MAIN IMG SWIPER-->
-      </div>
-      <div class="thumbnail-images">
+      <li class="header__item header__user-panel">
+        <button id="cartBtn">
+          <img src="img/icons/cart.svg" alt="корзина">
+          <span>корзина</span>
+        </button>
+      </li>
+    </ul>
+  </header>
+
+  <main class="product__main container">
+    <div class="product__container">
+      <div class="product__images-gallery">
+
+        <div class="images-gallery__main-image">
+          <!--ADD MAIN IMG SWIPER-->
+        </div>
+        <div class="thumbnail-images">
           <!-- ADD THUMBS IMG SWIPER -->
+        </div>
+
       </div>
 
+      <div class="product_info">
+
+        <div class="product__details">
+          <div class="product__top">
+            <h1 id="product__title">Назва товару</h1>
+            <p class="product__sku">
+              Код:
+              <span>FFF-FF-FF-000</span>
+            </p>
+          </div>
+
+          <p class="product__stock">
+            В наявності:
+            <span></span>
+          </p>
+
+          <a href="#comments" class="product__reviews-link">
+            <p class="product__rating"></p>
+            <p class="product__reviews-count"></p>
+          </a>
+        </div>
+
+        <div class="product__buy-group">
+          <div class="product_price">
+            <div class="product_price-top">
+              <span class="price-top_original" id="product-original-price"></span>
+              <span class="price-top_discount" id="product-discount"></span>
+            </div>
+            <p class="current-price" id="product-price"></p>
+          </div>
+          <button class="add-to-cart-btn" id="add-to-cart-btn">Додати в кошик</button>
+        </div>
+
+    <!--      <p class="product-category" id="product-category"></p>-->
+    <!--      <p class="product-description" id="product-description"></p>-->
+    <!--      <p class="product-brand">Бренд: <span id="product-brand"></span></p>-->
+      </div>
     </div>
-<!--    <div class="product-details">-->
-<!--      <h1 id="product-title">Назва товару</h1>-->
-<!--      <p class="product-category" id="product-category"></p>-->
-<!--      <p class="product-description" id="product-description"></p>-->
-<!--      <div class="product-price-section">-->
-<!--        <span class="current-price" id="product-price"></span>-->
-<!--        <span class="original-price" id="product-original-price"></span>-->
-<!--        <span class="discount" id="product-discount"></span>-->
-<!--      </div>-->
-<!--      <p class="product-rating">Рейтинг: <span id="product-rating"></span></p>-->
-<!--      <p class="product-stock">В наявності: <span id="product-stock"></span> (<span id="product-availability"></span>)</p>-->
-<!--      <p class="product-brand">Бренд: <span id="product-brand"></span></p>-->
-<!--      <p class="product-sku">Артикул: <span id="product-sku"></span></p>-->
-<!--      <button class="add-to-cart-btn" id="add-to-cart-btn">Додати в кошик</button>-->
-<!--    </div>-->
-  </div>
 
-<!--  <div class="product-additional-info">-->
-<!--    <h2>Додаткова інформація</h2>-->
-<!--    <p><strong>Вага:</strong> <span id="product-weight"></span> kg</p>-->
-<!--    <p><strong>Розміри (ШхВхГ):</strong> <span id="product-dimensions"></span> cm</p>-->
-<!--    <p><strong>Гарантія:</strong> <span id="product-warranty"></span></p>-->
-<!--    <p><strong>Інформація про доставку:</strong> <span id="product-shipping"></span></p>-->
-<!--    <p><strong>Політика повернення:</strong> <span id="product-return-policy"></span></p>-->
-<!--    <p><strong>Мінімальна кількість для замовлення:</strong> <span id="product-min-order"></span></p>-->
-<!--  </div>-->
+    <!--  <div class="product-additional-info">-->
+    <!--    <h2>Додаткова інформація</h2>-->
+    <!--    <p><strong>Вага:</strong> <span id="product-weight"></span> kg</p>-->
+    <!--    <p><strong>Розміри (ШхВхГ):</strong> <span id="product-dimensions"></span> cm</p>-->
+    <!--    <p><strong>Гарантія:</strong> <span id="product-warranty"></span></p>-->
+    <!--    <p><strong>Інформація про доставку:</strong> <span id="product-shipping"></span></p>-->
+    <!--    <p><strong>Політика повернення:</strong> <span id="product-return-policy"></span></p>-->
+    <!--    <p><strong>Мінімальна кількість для замовлення:</strong> <span id="product-min-order"></span></p>-->
+    <!--  </div>-->
 
-<!--  <div class="product-reviews" id="comments">-->
-<!--    <h2>Відгуки</h2>-->
-<!--    <div id="reviews-container">-->
-<!--      &lt;!&ndash; Сюди будуть додані відгуки &ndash;&gt;-->
-<!--    </div>-->
-<!--  </div>-->
-</main>
+      <div class="product-reviews" id="comments">
+    <!--    <h2>Відгуки</h2>-->
+    <!--    <div id="reviews-container">-->
+    <!--      &lt;!&ndash; Сюди будуть додані відгуки &ndash;&gt;-->
+    <!--    </div>-->
+      </div>
+  </main>
 
-<footer>
-  <div class="container">
+  <footer>
+    <div class="container">
       <span class="coppy">
         &copy Всі права захищені
       </span>
-    <ul>
-      <li>
-        <a href="https://t.me/otak_support_ua" target="_blank" class="footer__telegram">
-          Не знайшли товар? Напишіть нам ➔
-        </a>
-      </li>
-      <li>
-        <a href="tel:tel:0800305400" class="footer__tel"></a>
-      </li>
-      <li>
-        <a href="mailto:support@otak.ua" class="footer__mail"></a>
-      </li>
-    </ul>
-  </div>
-</footer>
+      <ul>
+        <li>
+          <a href="https://t.me/otak_support_ua" target="_blank" class="footer__telegram">
+            Не знайшли товар? Напишіть нам ➔
+          </a>
+        </li>
+        <li>
+          <a href="tel:tel:0800305400" class="footer__tel"></a>
+        </li>
+        <li>
+          <a href="mailto:support@otak.ua" class="footer__mail"></a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+</div>
 
 <section class="modal hidden">
 
