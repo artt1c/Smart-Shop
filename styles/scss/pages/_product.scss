@@ -62,7 +62,7 @@
               transition: border-color 0.3s ease, transform 0.2s ease;
 
               &:hover {
-                border-color: darken(variables.$active, 10%); // Затемнення при наведенні
+                border-color: darken(variables.$active, 10%);
                 transform: scale(1.05);
               }
             }
@@ -323,3 +323,4 @@
     text-align: right;
   }
 }
+
