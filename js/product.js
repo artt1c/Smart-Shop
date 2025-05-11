@@ -3,6 +3,7 @@ import swiperStructureForImage from "./helpers/swiperStructureForImage.js"
 import {updateProductQuantity} from "./utils/fetchDataForHomePage.js";
 import {modalAttachEvents} from "./utils/attachEvents.js";
 import searchInit from "./utils/search.js";
+import renderRatingStars from "./helpers/renderRatingStars.js";
 
 (() => {
 
@@ -37,27 +38,6 @@ import searchInit from "./utils/search.js";
     return params.get('id')
   }
 
-  const renderRatingStars = (rating) => {
-    const maxRating = 5;
-    const starFull = '&#9733;'; // ★
-    const starHalf = '&#11240;'; // ⭒ (U+2BE8 LEFT HALF BLACK STAR)
-    const starEmpty = '&#9734;'; // ☆
-
-    const roundedRating = Math.round(rating * 2) / 2; // Округлення до найближчих 0.5
-
-    let starsHTML = '';
-    const fullStarsCount = Math.floor(roundedRating);
-    const hasHalfStar = (roundedRating % 1 !== 0);
-    const emptyStarsCount = maxRating - fullStarsCount - (hasHalfStar ? 1 : 0);
-
-    starsHTML += starFull.repeat(fullStarsCount);
-    if (hasHalfStar) {
-      starsHTML += starHalf;
-    }
-    starsHTML += starEmpty.repeat(emptyStarsCount);
-
-    return starsHTML;
-  }
 
 
   const renderProductData = (product) => {
@@ -180,11 +160,11 @@ import searchInit from "./utils/search.js";
         const reviewCard = document.createElement('div')
         reviewCard.classList.add('review-card')
         reviewCard.innerHTML = `
-                    <p class="reviewer-info">${review.reviewerName || 'Анонім'}</p>
-                    <p class="review-rating">Рейтинг: ${'&#9733'.repeat(review.rating)}${'&#9734'.repeat(5 - review.rating)}</p>
-                    <p class="review-comment">${review.comment || 'Без коментаря'}</p>
-                    <p class="review-date">${new Date(review.date).toLocaleDateString('uk-UA')}</p>
-                `
+          <p class="reviewer-info">${review.reviewerName || 'Анонім'}</p>
+          <p class="review-rating">Рейтинг: ${'&#9733'.repeat(review.rating)}${'&#9734'.repeat(5 - review.rating)}</p>
+          <p class="review-comment">${review.comment || 'Без коментаря'}</p>
+          <p class="review-date">${new Date(review.date).toLocaleDateString('uk-UA')}</p>
+        `
         reviewsContainer.appendChild(reviewCard)
       })
     } else {
@@ -213,9 +193,9 @@ import searchInit from "./utils/search.js";
     } else {
       document.title = "ID товару не вказано | ОТАК"
       document.querySelector('.product__main').innerHTML = `
-                <h1>Помилка: ID продукту не вказано в URL.</h1>
-                <p><a href="index.html">Повернутися на головну</a></p>
-            `
+        <h1>Помилка: ID продукту не вказано в URL.</h1>
+        <p><a href="index.html">Повернутися на головну</a></p>
+      `
     }
   }
 

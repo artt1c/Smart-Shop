@@ -1,6 +1,6 @@
 const initImgSwiper = (swiperId, productTemplate) => {
   const imgSwiper = new Swiper('#' + swiperId.id, {
-    slidesPerView: '1',
+    slidesPerView: 'auto',
     spaceBetween: 0,
     loop: true,
     navigation: {

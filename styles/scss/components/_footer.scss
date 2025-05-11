@@ -9,8 +9,6 @@ footer {
     align-items: center;
     min-height: 12vh;
 
-
-
     ul {
       list-style: none;
       display: flex;
@@ -41,7 +39,7 @@ footer {
           background-color: variables.$active;
           transform: scale(1.05);
           &::before {
-            filter:opacity(0.5);
+            filter:opacity(0.5) !important;
           }
         }
       }
