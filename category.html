@@ -28,72 +28,71 @@
   <script src="js/category.js" type="module" defer></script>
 </head>
 <body>
-<header class="header">
-  <ul class="header__list">
+<div class="category-page">
+  <header class="header">
+    <ul class="header__list">
 
-    <li class="header__item header__category">
-      <a href="index.html" class="header__logo">
-        <img src="img/otak-logo.svg" alt="otak logo">
-      </a>
-    </li>
-
-    <li class="header__item header__search">
-      <form name="search" class="search__form">
-        <label for="form__input" class="search__label">
-          <img src="img/icons/search.svg" alt="search icon">
-          <input type="search" name="searchParams" id="form__input" placeholder="Пошук товарів">
-        </label>
-        <button>Знайти</button>
-      </form>
-
-      <div class="search__response hidden">
-        <p class="response__not-found">Нічого не знайдено</p>
-        <ul class="search__response-list">
-          <!--ADD PRODUCTS FROM JS-->
-        </ul>
-      </div>
-    </li>
-
-    <li class="header__item header__user-panel">
-      <button id="cartBtn">
-        <img src="img/icons/cart.svg" alt="корзина">
-        <span>корзина</span>
-      </button>
-    </li>
-  </ul>
-</header>
-
-<main>
-  <div class="container">
-    <section class="category-page">
-      <h1 id="category-title" class="category-page__title">Завантаження...</h1>
-      <div id="products-container" class="products-list">
-        <!-- ADD PRODUCT FROM JS -->
-      </div>
-    </section>
-  </div>
-</main>
-
-<footer>
-  <div class="container">
-      <span class="coppy">
-        &copy Всі права захищені
-      </span>
-    <ul>
-      <li>
-        <a href="https://t.me/otak_support_ua" target="_blank" class="footer__telegram">
-          Не знайшли товар? Напишіть нам ➔
+      <li class="header__item header__category">
+        <a href="index.html" class="header__logo">
+          <img src="img/otak-logo.svg" alt="otak logo">
         </a>
       </li>
-      <li>
-        <a href="tel:tel:0800305400" class="footer__tel"></a>
+
+      <li class="header__item header__search">
+        <form name="search" class="search__form">
+          <label for="form__input" class="search__label">
+            <img src="img/icons/search.svg" alt="search icon">
+            <input type="search" name="searchParams" id="form__input" placeholder="Пошук товарів">
+          </label>
+          <button>Знайти</button>
+        </form>
+
+        <div class="search__response hidden">
+          <p class="response__not-found">Нічого не знайдено</p>
+          <ul class="search__response-list">
+            <!--ADD PRODUCTS FROM JS-->
+          </ul>
+        </div>
       </li>
-      <li>
-        <a href="mailto:support@otak.ua" class="footer__mail"></a>
+
+      <li class="header__item header__user-panel">
+        <button id="cartBtn">
+          <img src="img/icons/cart.svg" alt="корзина">
+          <span>корзина</span>
+        </button>
       </li>
     </ul>
-  </div>
-</footer>
+  </header>
+
+  <main>
+    <h2 id="category-title" class="category-page__title">Завантаження...</h2>
+    <div id="products-container" class="products-list">
+      <!-- ADD PRODUCT FROM JS -->
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+        <span class="coppy">
+          &copy Всі права захищені
+        </span>
+      <ul>
+        <li>
+          <a href="https://t.me/otak_support_ua" target="_blank" class="footer__telegram">
+            Не знайшли товар? Напишіть нам ➔
+          </a>
+        </li>
+        <li>
+          <a href="tel:tel:0800305400" class="footer__tel"></a>
+        </li>
+        <li>
+          <a href="mailto:support@otak.ua" class="footer__mail"></a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+</div>
 
 <section class="modal hidden">
 

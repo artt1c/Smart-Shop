@@ -15,7 +15,7 @@ const renderProducts = (products, categoryName) => {
 
   if (categoryName) {
     const displayName = categoryName.charAt(0).toUpperCase() + categoryName.slice(1);
-    if (categoryTitleElement) categoryTitleElement.textContent = `Товари з категорії: ${displayName}`;
+    if (categoryTitleElement) categoryTitleElement.textContent = displayName;
   } else {
     if (categoryTitleElement) categoryTitleElement.textContent = 'Продукти Категорії';
   }
@@ -34,7 +34,7 @@ const renderProducts = (products, categoryName) => {
 
   products.forEach(product => {
     const productTemplate = document.createElement('div')
-    productTemplate.classList.add('products__item')
+    productTemplate.classList.add('products__item', 'products__slide')
 
     // CREATE PRODUCT INFO ELEMENTS
     const productsInfo = productInfoToElements(product);

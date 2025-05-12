@@ -1,42 +1,50 @@
-@use "../variables"; // Переконайтесь, що шлях до ваших змінних правильний
+@use "../variables";
 
 .category-page {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 
-  &__title { // Елемент блоку category-page
-    margin-bottom: 25px;
+  main {
+    flex: 1;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    width: fit-content;
+    padding: 0 15px;
+    margin: 0 auto 25px;
+    background-color: variables.$secondary;
+    border-radius: 10px;
+    color: variables.$primary-light;
     font-size: 2.2rem;
-    color: variables.$dark-gray;
-    text-align: center;
     font-weight: bold;
   }
 }
 
-.products-list { // Окремий блок для сітки товарів
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+.products-list {
+  max-width: 1375px;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(5, 18.5%);
+  grid-template-rows: auto;
+  justify-content: space-around;
 
-  img {
-    width: 240px;
-    height: 240px;
-  }
-
-  &__empty-message {
+  .products__empty-message {
     text-align: center;
     font-size: 1.2rem;
     color: variables.$dark-gray;
     padding: 40px 0;
   }
 
-  &__item { // Елемент блоку products
-    display: flex; // Додаємо для кращого контролю над внутрішніми елементами
-    flex-direction: column; // Розташовуємо елементи вертикально
+  .products__item {
+    margin-bottom: 15px;
     background-color: variables.$primary-background;
     border: 1px solid variables.$gray;
     border-radius: 12px;
-    padding: 20px;
+    padding: 20px 20px 15px;
     text-align: center;
     transition: box-shadow 0.25s ease-in-out, transform 0.25s ease-in-out;
 
@@ -45,175 +53,15 @@
       transform: translateY(-5px);
       z-index: 5;
     }
-  }
 
-  // Новий стиль для обгортки посилання (зображення + заголовок)
-  &__item-link-wrapper {
-    text-decoration: none; // Прибираємо підкреслення посилання
-    color: inherit; // Наслідуємо колір тексту від батьківського елемента
-    display: flex;
-    flex-direction: column;
-    align-items: center; // Центруємо зображення та заголовок
-    margin-bottom: 10px; // Відступ знизу для цього блоку
-  }
-
-  &__item-image { // Елемент всередині products__item
-    width: 100%;
-    max-width: 200px;
-    height: 180px;
-    object-fit: contain;
-    margin-bottom: 15px;
-    border-radius: 8px;
-  }
-
-  &__item-title { // Елемент всередині products__item
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-    color: variables.$dark-gray;
-    font-weight: 600;
-    min-height: 40px; // Залишаємо для однакової висоти
-  }
-
-  // Стилі для блоку рейтингу
-  &__item-rating {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 10px;
-    font-size: 0.9rem;
-    color: variables.$dark-gray;
-  }
-
-  &__item-rating-stars {
-    color: #f8d64e; // Колір для зірок (можна винести в змінні)
-    margin-right: 5px;
-  }
-
-  &__item-reviews-count {
-    font-size: 0.85rem;
-    color: variables.$dark-gray; // Або інший колір для кількості відгуків
-  }
-
-  &__item-price { // Елемент всередині products__item
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: variables.$active;
-    margin-bottom: 15px;
-    margin-top: auto; // Притискає ціну та кнопку до низу, якщо картка flex-column
-  }
-
-  &__item-currency { // Елемент для валюти всередині products__item-price
-    font-size: 1rem; // Якщо потрібно стилізувати окремо
-  }
-
-  // Стилі для кнопки "Додати до кошика"
-  &__add-to-cart-button {
-    display: inline-block;
-    padding: 10px 15px;
-    background-color: variables.$secondary;
-    color: variables.$primary-light;
-    text-decoration: none;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-    width: 100%; // Робимо кнопку на всю ширину картки
-
-    &:hover {
-      background-color: variables.$active;
-      transform: scale(1.03);
-    }
-    &:active {
-      transform: scale(.98);
+    .img {
+      min-width: 200px;
+      min-height: 200px;
     }
 
-    &:disabled { // Стиль для неактивної кнопки (якщо потрібно)
-      background-color: variables.$gray;
-      cursor: not-allowed;
+    h4 {
+      color: variables.$primary;
     }
   }
 
-  // Видаляємо старий стиль для __item-link, оскільки тепер посилання - це обгортка
-  /* &__item-link { ... } */
-}
-
-// Адаптивність для менших екранів
-@media (max-width: 1200px) {
-  .products {
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  }
-}
-
-@media (max-width: 992px) {
-  .products {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 15px;
-  }
-  .products__item {
-    padding: 15px;
-  }
-  .products__item-image {
-    height: 160px;
-    max-width: 180px;
-  }
-  .products__item-title {
-    font-size: 1rem;
-    min-height: 36px;
-  }
-  .products__item-price {
-    font-size: 1.1rem;
-  }
-  .products__add-to-cart-button {
-    padding: 8px 12px;
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .category-page__title {
-    font-size: 1.8rem;
-  }
-  .products {
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  }
-  .products__item-title {
-    min-height: 32px; // Трохи менше для мобільних
-  }
-}
-
-@media (max-width: 576px) {
-  .products {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); // Дозволяємо 2 колонки, якщо є місце
-    gap: 10px;
-  }
-  .products__item {
-    padding: 10px;
-  }
-  .products__item-image {
-    height: 140px; // Зменшуємо зображення
-    max-width: 100%;
-  }
-  .products__item-title {
-    font-size: 0.9rem;
-  }
-  .products__item-rating {
-    font-size: 0.8rem;
-    margin-bottom: 8px;
-  }
-  .products__item-price {
-    font-size: 1rem;
-    margin-bottom: 10px;
-  }
-  .products__add-to-cart-button {
-    padding: 8px 10px;
-    font-size: 0.85rem;
-  }
-}
-
-@media (max-width: 400px) { // Для дуже маленьких екранів - одна колонка
-  .products {
-    grid-template-columns: 1fr;
-  }
 }
