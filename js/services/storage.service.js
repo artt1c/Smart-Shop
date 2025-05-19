@@ -134,26 +134,6 @@ const storage = {
     get: () => handleStorage.get('allProducts')
   },
 
-  // historyVisited: {
-  //   set: (arrProducts) => {
-  //     const data = arrProducts.map(item => ({
-  //       id: item.id,
-  //       title: item.title,
-  //       price: item.price,
-  //       rating: item.rating,
-  //       reviews: item.reviews,
-  //       images: item.images
-  //     }));
-  //   },
-  //
-  //   add: (arrProducts) => {
-  //
-  //   },
-  //
-  //   get: () => handleStorage.get('historyVisited'),
-  //
-  // },
-
   cart: {
     add: (product, quantity) => {
       if (quantity < 1) throw new Error('quantity cannot be less than one')

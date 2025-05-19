@@ -54,7 +54,7 @@ const productInfoToElements = (product) => {
   buyGroup.append(productSlidePrice, cartBtn)
 
   return {
-    swiperId,
+    swiperId: swiperId || null,
     elements: [productImgLink, productTitleLink, feedbackSectionLink, buyGroup]
   }
 }
