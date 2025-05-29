@@ -39,11 +39,8 @@ import renderRatingStars from "./helpers/renderRatingStars.js";
   }
 
 
-
   const renderProductData = (product) => {
     if (!product) {
-
-      // todo refactor this shit
 
       document.title = "Товар не знайдено | ОТАК"
       titleElement.textContent = 'Продукт не знайдено'
